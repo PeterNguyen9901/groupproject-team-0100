@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-
+//test
 public class Character {
 	private int HP;
 	private int totalDamage;
