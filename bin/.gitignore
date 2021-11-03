@@ -1,3 +1,4 @@
+/Character.class
 /Displayable.class
 /GButton.class
 /GParagraph.class
@@ -11,4 +12,4 @@
 /weaponType.class
 /weapons$weaponType.class
 /weapons.class
-/Character.class
+/ShopMenu.class
