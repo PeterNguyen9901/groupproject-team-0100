@@ -1,17 +1,29 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.border.Border;
 
 //class for GUI, but code within as of now is just an example
 public class MainMenu implements ItemListener{
 	private static JPanel cards;
+	public JLabel label;
 	//private static JPanel mainMenu;
 	public void addComponentToPane(Container pane) {
 		JPanel main = new JPanel();
+		
+		Border blackLine = BorderFactory.createLineBorder(Color.black);
+		label = new JLabel();
+		label.setText("<html>Gold: <br/>Level: </html>");
+		
+		label.setBorder(blackLine);
+		main.add(label);
+
+		
+		
 		main.add(new Button("Shop"));
 		main.add(new Button("Fight"));
 		main.add(new Button("Stats"));
-		cards = new JPanel(new CardLayout());
+		cards = new JPanel(new CardLayout(50,50));
 		cards.add(main);
 		pane.add(cards, BorderLayout.PAGE_END);
 	}
