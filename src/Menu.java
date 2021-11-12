@@ -81,6 +81,16 @@ public class Menu {
 		goldLabel.setBorder(goldAndLevel);
 		pane.add(goldLabel);
 		 
+		
+		ImageIcon axe = new ImageIcon("wip_axe.jpg");
+		JButton axeButton = new JButton(axe);
+		axeButton.setBounds(40, 95, 100, 95);
+		pane.add(axeButton);
+		
+		ImageIcon bow = new ImageIcon("wip_bow.jpg");
+		JButton bowButton = new JButton(bow);
+		pane.add(bowButton);
+		
 		deck.add(pane,"shop");
 	}
 	public void start(Container pane) {
