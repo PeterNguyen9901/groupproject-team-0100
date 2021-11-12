@@ -12,7 +12,7 @@ public class Menu {
 	private JPanel shopPanel = new JPanel();
 	private JPanel startPanel = new JPanel();
 	CardLayout LAYOUT = new CardLayout();
-
+	Character player = new Character();
 	public Menu() {
 		deck.setLayout(LAYOUT);
 		
@@ -23,15 +23,27 @@ public class Menu {
 		frame.add(deck);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
+        frame.setSize(500,500);
         frame.setVisible(true);
 	}
 	public void MainMenu(Container pane) {
+		pane.setLayout(new BorderLayout()); //make pane border layout
+		int gold = player.getCurrency(); //will be used to create JLabel to show gold
+		JPanel BottomButtons = new JPanel(); //JPanel to hold buttons that will be on bottom of the screen
+		BottomButtons.setLayout(new GridLayout(1,3,1,1)); //makes JPanel a grid that is 1 by 3 and has a horizontal and vertical gap of 1
+		
+		//creates buttons
 		JButton MainShopButton = new JButton("Shop");
 		JButton MainFightButton = new JButton("Fight");
 		JButton MainStatsButton = new JButton("Stats");
-		pane.add(MainShopButton);
-		pane.add(MainFightButton);
-		pane.add(MainStatsButton);
+		
+		//add buttons to BottomButtons Panel
+		BottomButtons.add(MainShopButton);
+		BottomButtons.add(MainFightButton);
+		BottomButtons.add(MainStatsButton);
+		
+		//Add JPanel to the bottom of pane 
+		pane.add(BottomButtons, BorderLayout.PAGE_END);
 		
 		//action listener for shop button
 		MainShopButton.addActionListener(new ActionListener(){
@@ -97,10 +109,10 @@ public class Menu {
 		JLabel startImg  = new JLabel();
 		
 		startImg.setIcon(new ImageIcon("castle1.jpg"));
-		startImg.setHorizontalTextPosition(JLabel.CENTER);
-		pane.add(startImg, BorderLayout.NORTH); // Must fix img placement
+		startImg.setVerticalTextPosition(JLabel.NORTH);
+		pane.add(startImg, BorderLayout.PAGE_START);
 		JButton startButton = new JButton("Press Here To Start a Adventure!");
-		pane.add(startButton, BorderLayout.SOUTH);
+		pane.add(startButton, BorderLayout.CENTER);
 		
 		startButton.addActionListener(new ActionListener() {
 			@Override

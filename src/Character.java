@@ -2,6 +2,7 @@ import java.util.ArrayList;
 //test
 public class Character {
 	private int monsterKilled;
+	private Gold Currency;
 	ArrayList<weaponType> weaponList;
 	ArrayList<monsterType> monsterList;
 	public int getmonsterKilled() {
@@ -32,5 +33,7 @@ public class Character {
 		return monsterType.SLIME;
 		
 	}
-
+	public int getCurrency() {
+		return Currency.getGold();
+	}
 }
