@@ -10,14 +10,16 @@ public class Menu {
 	private JPanel deck = new JPanel();
 	private JPanel mainPanel = new JPanel();
 	private JPanel shopPanel = new JPanel();
+	private JPanel startPanel = new JPanel();
 	CardLayout LAYOUT = new CardLayout();
 
 	public Menu() {
 		deck.setLayout(LAYOUT);
 		
+		start(startPanel);
 		MainMenu(mainPanel);
 		shop(shopPanel);
-		LAYOUT.show(deck, "main");
+		LAYOUT.show(deck, "start");
 		frame.add(deck);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
@@ -80,6 +82,24 @@ public class Menu {
 		pane.add(goldLabel);
 		 
 		deck.add(pane,"shop");
+	}
+	public void start(Container pane) {
+		JLabel startImg  = new JLabel();
+		
+		startImg.setIcon(new ImageIcon("castle1.jpg"));
+		startImg.setHorizontalTextPosition(JLabel.CENTER);
+		pane.add(startImg, BorderLayout.NORTH); // Must fix img placement
+		JButton startButton = new JButton("Press Here To Start a Adventure!");
+		pane.add(startButton, BorderLayout.SOUTH);
+		
+		startButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				LAYOUT.show(deck, "main");
+			}
+		});
+		deck.add(pane, "start");
+		
 	}
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
