@@ -93,12 +93,13 @@ public class Menu {
 		goldLabel.setBorder(goldAndLevel);
 		pane.add(goldLabel);
 		 
-		
+		// buy button for axe
 		ImageIcon axe = new ImageIcon("wip_axe.jpg");
 		JButton axeButton = new JButton(axe);
 		axeButton.setBounds(40, 95, 100, 95);
 		pane.add(axeButton);
 		
+		// buy button for bow
 		ImageIcon bow = new ImageIcon("wip_bow.jpg");
 		JButton bowButton = new JButton(bow);
 		pane.add(bowButton);
