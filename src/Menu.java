@@ -23,6 +23,7 @@ public class Menu {
 		frame.add(deck);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
+        frame.setSize(500,500);
         frame.setVisible(true);
 	}
 	public void MainMenu(Container pane) {
@@ -87,10 +88,10 @@ public class Menu {
 		JLabel startImg  = new JLabel();
 		
 		startImg.setIcon(new ImageIcon("castle1.jpg"));
-		startImg.setHorizontalTextPosition(JLabel.CENTER);
-		pane.add(startImg, BorderLayout.NORTH); // Must fix img placement
+		startImg.setVerticalTextPosition(JLabel.NORTH);
+		pane.add(startImg, BorderLayout.PAGE_START);
 		JButton startButton = new JButton("Press Here To Start a Adventure!");
-		pane.add(startButton, BorderLayout.SOUTH);
+		pane.add(startButton, BorderLayout.CENTER);
 		
 		startButton.addActionListener(new ActionListener() {
 			@Override
