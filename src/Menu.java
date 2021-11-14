@@ -28,19 +28,24 @@ public class Menu {
 	}
 	public void MainMenu(Container pane) {
 		pane.setLayout(new BorderLayout()); //make pane border layout
-		int gold = player.getCurrency(); //will be used to create JLabel to show gold
+		//int gold = player.getCurrency(); //will be used to create JLabel to show gold
 		JPanel BottomButtons = new JPanel(); //JPanel to hold buttons that will be on bottom of the screen
 		BottomButtons.setLayout(new GridLayout(1,3,1,1)); //makes JPanel a grid that is 1 by 3 and has a horizontal and vertical gap of 1
+		Border blackLine = BorderFactory.createLineBorder(Color.black);
+		
 		
 		//creates buttons
 		JButton MainShopButton = new JButton("Shop");
 		JButton MainFightButton = new JButton("Fight");
 		JButton MainStatsButton = new JButton("Stats");
+		JButton MainQuitButton = new JButton("<html><font color=red size=4><b>Quit</b></html>");
+		MainQuitButton.setBorder(blackLine);
 		
 		//add buttons to BottomButtons Panel
 		BottomButtons.add(MainShopButton);
 		BottomButtons.add(MainFightButton);
 		BottomButtons.add(MainStatsButton);
+		BottomButtons.add(MainQuitButton);
 		
 		//Add JPanel to the bottom of pane 
 		pane.add(BottomButtons, BorderLayout.PAGE_END);
@@ -66,12 +71,18 @@ public class Menu {
 				LAYOUT.show(deck, "stats");
 			}
 		});
+		MainQuitButton.addActionListener(new ActionListener(){
+			public void actionPerformed (ActionEvent e) {
+				LAYOUT.previous(deck);
+				 }
+			});
+
 		
 		deck.add(pane, "main");
 	}
 	public void shop(Container pane) {
 		JLabel goldLabel, levelLabel;
-		JButton ShopQuit = new JButton("Quit");
+		JButton ShopQuit = new JButton("<html><font color=red size=4><b>Quit</b></html>");
 		JButton ShopFightButton = new JButton("Fight");
 		JButton ShopStatsButton = new JButton("Stats");
 		JButton ShopMainButton = new JButton("Main");
@@ -81,6 +92,13 @@ public class Menu {
 		pane.add(ShopMainButton);
 		pane.add(ShopFightButton);
 		pane.add(ShopStatsButton);
+		ShopQuit.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed (ActionEvent e) { //go back to start menu
+				  LAYOUT.previous(deck);
+				 }
+			});
+
 		ShopMainButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -114,7 +132,17 @@ public class Menu {
 		pane.add(startImg, BorderLayout.PAGE_START);
 		JButton startButton = new JButton("Press Here To Start a Adventure!");
 		pane.add(startButton, BorderLayout.CENTER);
-		
+		JButton startQuit= new JButton("<html><font color=red size=4><b>Quit</b></html>");
+		Border blackLine = BorderFactory.createLineBorder(Color.black);
+		startQuit.setBorder(blackLine);
+		pane.add(startQuit);
+		startQuit.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed (ActionEvent e) {
+				  System.exit(0);
+				 }
+			});
+
 		startButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
