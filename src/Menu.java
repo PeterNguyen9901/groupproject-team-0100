@@ -27,7 +27,9 @@ public class Menu {
         frame.setVisible(true);
 	}
 	public void MainMenu(Container pane) {
+		ImagePanel background = new ImagePanel("background1.jpg");
 		pane.setLayout(new BorderLayout()); //make pane border layout
+		pane.add(background);
 		//int gold = player.getCurrency(); //will be used to create JLabel to show gold
 		JPanel BottomButtons = new JPanel(); //JPanel to hold buttons that will be on bottom of the screen
 		BottomButtons.setLayout(new GridLayout(1,3,1,1)); //makes JPanel a grid that is 1 by 3 and has a horizontal and vertical gap of 1
@@ -39,7 +41,6 @@ public class Menu {
 		JButton MainFightButton = new JButton("Fight");
 		JButton MainStatsButton = new JButton("Stats");
 		JButton MainQuitButton = new JButton("<html><font color=red size=4><b>Quit</b></html>");
-		MainQuitButton.setBorder(blackLine);
 		
 		//add buttons to BottomButtons Panel
 		BottomButtons.add(MainShopButton);
@@ -95,7 +96,7 @@ public class Menu {
 		ShopQuit.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed (ActionEvent e) { //go back to start menu
-				  LAYOUT.previous(deck);
+				  LAYOUT.show(deck, "start");
 				 }
 			});
 
