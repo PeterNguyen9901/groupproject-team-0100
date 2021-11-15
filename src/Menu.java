@@ -122,16 +122,39 @@ public class Menu {
 		goldLabel.setBorder(goldAndLevel);
 		pane.add(goldLabel);
 		 
+
+		// JPanel that will hold all of the buy weapons buttons 
+		JPanel buyButtons = new JPanel();
+		buyButtons.setLayout(new GridLayout(1,3,1,1));
+	
 		// buy button for axe
 		ImageIcon axe = new ImageIcon("wip_axe.jpg");
 		JButton axeButton = new JButton(axe);
-		axeButton.setBounds(40, 95, 100, 95);
-		pane.add(axeButton);
-		
+		buyButtons.add(axeButton); // add axeButton to buyButtons panel 
+				
 		// buy button for bow
 		ImageIcon bow = new ImageIcon("wip_bow.jpg");
 		JButton bowButton = new JButton(bow);
-		pane.add(bowButton);
+		buyButtons.add(bowButton); // add bowButton to buyButtons panel
+
+		// buy button for dagger
+		ImageIcon dagger = new ImageIcon("wip_dagger.jpg");
+		JButton daggerButton = new JButton(dagger);
+		buyButtons.add(daggerButton); // add daggerButton to buyButtons panel		
+		
+		// buy button for spear 
+		ImageIcon spear = new ImageIcon("wip_spear.jpg");
+		JButton spearButton = new JButton(spear);
+		buyButtons.add(spearButton);	// add spearButton to buyButtons panel
+		
+		// buy button for sword
+		ImageIcon sword = new ImageIcon("wip_sword.jpg");
+		JButton swordButton = new JButton(sword);
+		buyButtons.add(swordButton); 	// add swordButton to buyButtons panel
+		
+		// adds buyButtons to end of pane 
+		pane.add(buyButtons, BorderLayout.PAGE_END); 
+				
 		
 		deck.add(pane,"shop");
 	}
