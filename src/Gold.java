@@ -1,6 +1,6 @@
 
 class Gold {
-	private int gold;
+	private int gold = 0;
 
 	public int getGold() {
 		return gold;

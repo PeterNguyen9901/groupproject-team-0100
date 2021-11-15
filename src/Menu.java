@@ -105,9 +105,19 @@ public class Menu {
 				LAYOUT.show(deck, "main");
 			}
 		});
-		Border goldAndLevel = BorderFactory.createLineBorder(Color.black);
+		Border goldAndLevel = BorderFactory.createLineBorder(Color.orange);
 		goldLabel = new JLabel(); 
-		goldLabel.setText("<html>Gold:   <br/>Level:   </html>"); 
+		Gold g = new Gold();
+		int goldX = g.getGold();
+		Level l = new Level();
+		int levelX = l.getLevel();
+		String goldAmount = String.valueOf(goldX);
+		String theLevel = String.valueOf(levelX);
+		String gold = "<html>Gold: ";
+		String level = "<br/>Level: ";
+		String FullText = gold + goldAmount + level + theLevel;
+		
+		goldLabel.setText(FullText); 
 		goldLabel.setBorder(goldAndLevel);
 		pane.add(goldLabel);
 		 

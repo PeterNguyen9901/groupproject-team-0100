@@ -1,6 +1,6 @@
 
 class Level {
-	private int level;
+	private int level = 1;
 
 	
 	public int getLevel() {
