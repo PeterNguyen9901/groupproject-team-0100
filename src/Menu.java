@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 //import java.awt.event.*;
 import javax.swing.border.Border;
-
+import java.util.Timer;
 public class Menu {
 	JFrame frame = new JFrame("Click Click Go");
 	private JPanel deck = new JPanel();
@@ -81,7 +81,7 @@ public class Menu {
 		deck.add(pane, "main");
 	}
 	public void shop(Container pane) {
-		JLabel goldLabel, levelLabel;
+		JLabel goldLabel;
 		JButton ShopQuit = new JButton("<html><font color=red size=4><b>Quit</b></html>");
 		JButton ShopFightButton = new JButton("Fight");
 		JButton ShopStatsButton = new JButton("Stats");
@@ -133,6 +133,10 @@ public class Menu {
 		pane.add(bowButton);
 		
 		deck.add(pane,"shop");
+	}
+	public void fight(Container pane){
+		Timer timer = new Timer(); //Created start of timer
+		
 	}
 	public void start(Container pane) {
 		JLabel startImg  = new JLabel();
