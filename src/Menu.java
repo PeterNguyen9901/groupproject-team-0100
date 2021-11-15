@@ -132,6 +132,21 @@ public class Menu {
 		JButton bowButton = new JButton(bow);
 		pane.add(bowButton);
 		
+		//buy button for dagger
+		ImageIcon dagger = new ImageIcon("wip_dagger.jpg");
+		JButton daggerButton = new JButton(dagger);
+		pane.add(daggerButton);
+		
+		//buy button for spear
+		ImageIcon spear = new ImageIcon("wip_spear.jpg");
+		JButton spearButton = new JButton(spear);
+		pane.add(spearButton);
+		
+		//buy button for sword
+		ImageIcon sword = new ImageIcon("wip_sword.jpg");
+		JButton swordButton = new JButton(sword);
+		pane.add(swordButton);
+		
 		deck.add(pane,"shop");
 	}
 	public void start(Container pane) {
