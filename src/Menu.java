@@ -147,6 +147,10 @@ public class Menu {
 		JButton swordButton = new JButton(sword);
 		pane.add(swordButton);
 		
+		//buy button for health
+		JButton healthButton = new JButton("Upgrade");
+		pane.add(healthButton);
+		
 		deck.add(pane,"shop");
 	}
 	public void start(Container pane) {
