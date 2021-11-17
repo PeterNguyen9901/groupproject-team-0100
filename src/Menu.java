@@ -25,6 +25,8 @@ public class Menu {
 		start(startPanel);
 		MainMenu(mainPanel);
 		shop(shopPanel);
+		fight(fightPanel);
+		
 		LAYOUT.show(deck, "start");
 		frame.add(deck);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -208,6 +210,7 @@ public class Menu {
 				LAYOUT.previous(deck);
 				 }
 			});
+		deck.add(pane, "fight");
 
 		
 	}
