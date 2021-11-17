@@ -163,11 +163,17 @@ public class Menu {
 		
 	}
 	public void start(Container pane) {
-		JLabel startImg  = new JLabel();
+		/*
+		ImagePanel background = new ImagePanel("castle1.jpg");
+		pane.setLayout(new BorderLayout()); //make pane border layout
+		pane.add(background);
+		*/
+		//JLabel startImg  = new JLabel();
 		
-		startImg.setIcon(new ImageIcon("castle1.jpg"));
+		/*startImg.setIcon(new ImageIcon("castle1.jpg"));
 		startImg.setVerticalTextPosition(JLabel.NORTH);
 		pane.add(startImg, BorderLayout.PAGE_START);
+		*/
 		JButton startButton = new JButton("Press Here To Start a Adventure!");
 		pane.add(startButton, BorderLayout.CENTER);
 		JButton startQuit= new JButton("<html><font color=red size=4><b>Quit</b></html>");

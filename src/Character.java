@@ -8,6 +8,8 @@ public class Character {
 	public Character() {
 		monsterKilled = 0;
 		Currency = new Gold();
+		weaponList = new ArrayList<weapons>();
+		monsterList = new ArrayList<Monster>();
 		initWeaponsList();
 		initMonsterList();
 	}
