@@ -163,23 +163,21 @@ public class Menu {
 		
 	}
 	public void start(Container pane) {
-		/*
 		ImagePanel background = new ImagePanel("castle1.jpg");
-		pane.setLayout(new BorderLayout()); //make pane border layout
+		pane.setLayout(new BorderLayout()); 
 		pane.add(background);
-		*/
-		//JLabel startImg  = new JLabel();
 		
-		/*startImg.setIcon(new ImageIcon("castle1.jpg"));
-		startImg.setVerticalTextPosition(JLabel.NORTH);
-		pane.add(startImg, BorderLayout.PAGE_START);
-		*/
-		JButton startButton = new JButton("Press Here To Start a Adventure!");
-		pane.add(startButton, BorderLayout.CENTER);
-		JButton startQuit= new JButton("<html><font color=red size=4><b>Quit</b></html>");
+		JPanel BottomButtons = new JPanel(); 
+		BottomButtons.setLayout(new GridLayout(1,2,1,1)); 
 		Border blackLine = BorderFactory.createLineBorder(Color.black);
+		JButton startButton = new JButton("Press Here To Start a Adventure!");
+		JButton startQuit= new JButton("<html><font color=red size=4><b>Quit</b></html>");
 		startQuit.setBorder(blackLine);
-		pane.add(startQuit);
+		BottomButtons.add(startButton);
+		BottomButtons.add(startQuit);
+		
+		
+		pane.add(BottomButtons, BorderLayout.PAGE_END);
 		startQuit.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed (ActionEvent e) {
