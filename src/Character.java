@@ -5,6 +5,12 @@ public class Character {
 	private Gold Currency;
 	ArrayList<weapons> weaponList;
 	ArrayList<Monster> monsterList;
+	public Character() {
+		monsterKilled = 0;
+		Currency = new Gold();
+		initWeaponsList();
+		initMonsterList();
+	}
 	public int getmonsterKilled() {
 		return monsterKilled;
 	}
@@ -14,9 +20,13 @@ public class Character {
 		this.monsterKilled = monsterKilled;
 	}
 	
-	public void initWeaponsOwned() {
+	public void initWeaponsList() {
 		//fill
-		//weaponList.add(null)
+		weaponList.add(new weapons(weaponType.AXE));
+		weaponList.add(new weapons(weaponType.SWORD));
+		weaponList.add(new weapons(weaponType.BOW));
+		weaponList.add(new weapons(weaponType.SPEAR));
+		weaponList.add(new weapons(weaponType.DAGGER));
 	}
 	public void initMonsterList() {
 		monsterList.add(new Monster(monsterType.SLIME));

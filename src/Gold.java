@@ -1,7 +1,9 @@
 
 class Gold {
-	private int gold = 0;
-
+	private int gold;
+	public Gold() {
+		gold = 0;
+	}
 	public int getGold() {
 		return gold;
 	}
