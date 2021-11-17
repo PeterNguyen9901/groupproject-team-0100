@@ -38,9 +38,13 @@ public class Menu {
 		
 		//creates buttons
 		JButton MainShopButton = new JButton("Shop");
+		MainShopButton.setBorder(blackLine);
 		JButton MainFightButton = new JButton("Fight");
+		MainFightButton.setBorder(blackLine);
 		JButton MainStatsButton = new JButton("Stats");
+		MainStatsButton.setBorder(blackLine);
 		JButton MainQuitButton = new JButton("<html><font color=red size=4><b>Quit</b></html>");
+		MainQuitButton.setBorder(blackLine);
 		
 		//add buttons to BottomButtons Panel
 		BottomButtons.add(MainShopButton);
@@ -173,6 +177,7 @@ public class Menu {
 		JButton startButton = new JButton("Press Here To Start a Adventure!");
 		JButton startQuit= new JButton("<html><font color=red size=4><b>Quit</b></html>");
 		startQuit.setBorder(blackLine);
+		startButton.setBorder(blackLine);
 		BottomButtons.add(startButton);
 		BottomButtons.add(startQuit);
 		
