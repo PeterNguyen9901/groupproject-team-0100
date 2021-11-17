@@ -1,17 +1,22 @@
-import java.util.ArrayList;
+
+import java.util.HashMap;
 //test
 public class Character {
 	private int monsterKilled;
 	private Gold Currency;
-	ArrayList<weapons> weaponList;
-	ArrayList<Monster> monsterList;
+	HashMap<weaponType,weapons> weaponList;
+	HashMap<monsterType, Monster> monsterList;
+	//ArrayList<weapons> weaponList;
+	//ArrayList<Monster> monsterList;
+	Level currLevel;
 	public Character() {
 		monsterKilled = 0;
 		Currency = new Gold();
-		weaponList = new ArrayList<weapons>();
-		monsterList = new ArrayList<Monster>();
+		weaponList = new HashMap<weaponType, weapons>();
+		monsterList = new HashMap<monsterType, Monster>();
 		initWeaponsList();
 		initMonsterList();
+		currLevel = new Level();
 	}
 	public int getmonsterKilled() {
 		return monsterKilled;
@@ -21,30 +26,39 @@ public class Character {
 	public void setMonsterKilled(int monsterKilled) {
 		this.monsterKilled = monsterKilled;
 	}
+	public void setLevel(int x) {
+		currLevel.setLevel(x);
+	}
+	public int getLevel() {
+		return currLevel.getLevel();
+	}
 	
 	public void initWeaponsList() {
 		//fill
-		weaponList.add(new weapons(weaponType.AXE));
-		weaponList.add(new weapons(weaponType.SWORD));
-		weaponList.add(new weapons(weaponType.BOW));
-		weaponList.add(new weapons(weaponType.SPEAR));
-		weaponList.add(new weapons(weaponType.DAGGER));
+		weaponList.put(weaponType.AXE, new weapons(weaponType.AXE));
+		weaponList.put(weaponType.SWORD, new weapons(weaponType.SWORD));
+		weaponList.put(weaponType.BOW, new weapons(weaponType.BOW));
+		weaponList.put(weaponType.SPEAR, new weapons(weaponType.SPEAR));
+		weaponList.put(weaponType.DAGGER, new weapons(weaponType.DAGGER));
 	}
 	public void initMonsterList() {
-		monsterList.add(new Monster(monsterType.SLIME));
-		monsterList.add(new Monster(monsterType.BANDIT));
-		monsterList.add(new Monster(monsterType.GOBLIN));
-		monsterList.add(new Monster(monsterType.WEREWOLF));
-		monsterList.add(new Monster(monsterType.KNIGHT));
-		monsterList.add(new Monster(monsterType.DEMON));
+		monsterList.put(monsterType.SLIME,new Monster(monsterType.SLIME));
+		monsterList.put(monsterType.GOBLIN,new Monster(monsterType.GOBLIN));
+		monsterList.put(monsterType.WEREWOLF,new Monster(monsterType.WEREWOLF));
+		monsterList.put(monsterType.BANDIT,new Monster(monsterType.BANDIT));
+		monsterList.put(monsterType.KNIGHT,new Monster(monsterType.KNIGHT));
+		monsterList.put(monsterType.DEMON,new Monster(monsterType.DEMON));
 	}
-	public ArrayList<weapons> getWeaponList() {
+	public HashMap<weaponType, weapons> getWeaponList() {
 		return weaponList;
 	}
-	public ArrayList<Monster> getMonsterList() {
+	public HashMap<monsterType, Monster> getMonsterList() {
 		
 		return monsterList;
 		
+	}
+	public void setCurrency(int x) {
+		Currency.setGold(x);
 	}
 	public int getCurrency() {
 		return Currency.getGold();
