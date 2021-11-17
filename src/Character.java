@@ -9,9 +9,11 @@ public class Character {
 	//ArrayList<weapons> weaponList;
 	//ArrayList<Monster> monsterList;
 	Level currLevel;
+	HP health;
 	public Character() {
 		monsterKilled = 0;
 		Currency = new Gold();
+		health = new HP();
 		weaponList = new HashMap<weaponType, weapons>();
 		monsterList = new HashMap<monsterType, Monster>();
 		initWeaponsList();
