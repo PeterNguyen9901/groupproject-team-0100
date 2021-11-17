@@ -3,8 +3,14 @@ import java.util.ArrayList;
 public class Character {
 	private int monsterKilled;
 	private Gold Currency;
-	ArrayList<weaponType> weaponList;
-	ArrayList<monsterType> monsterList;
+	ArrayList<weapons> weaponList;
+	ArrayList<Monster> monsterList;
+	public Character() {
+		monsterKilled = 0;
+		Currency = new Gold();
+		initWeaponsList();
+		initMonsterList();
+	}
 	public int getmonsterKilled() {
 		return monsterKilled;
 	}
@@ -14,23 +20,28 @@ public class Character {
 		this.monsterKilled = monsterKilled;
 	}
 	
-	public void setWeaponsOwned() {
+	public void initWeaponsList() {
 		//fill
-
+		weaponList.add(new weapons(weaponType.AXE));
+		weaponList.add(new weapons(weaponType.SWORD));
+		weaponList.add(new weapons(weaponType.BOW));
+		weaponList.add(new weapons(weaponType.SPEAR));
+		weaponList.add(new weapons(weaponType.DAGGER));
 	}
-	public void setMonsterList() {
-		//Fill
+	public void initMonsterList() {
+		monsterList.add(new Monster(monsterType.SLIME));
+		monsterList.add(new Monster(monsterType.BANDIT));
+		monsterList.add(new Monster(monsterType.GOBLIN));
+		monsterList.add(new Monster(monsterType.WEREWOLF));
+		monsterList.add(new Monster(monsterType.KNIGHT));
+		monsterList.add(new Monster(monsterType.DEMON));
 	}
-	public weaponType getWeaponList() {
-		
-		//Fill
-		return weaponType.SWORD;
+	public ArrayList<weapons> getWeaponList() {
+		return weaponList;
 	}
-	public monsterType getMonsterList() {
+	public ArrayList<Monster> getMonsterList() {
 		
-		
-		//Fill
-		return monsterType.SLIME;
+		return monsterList;
 		
 	}
 	public int getCurrency() {

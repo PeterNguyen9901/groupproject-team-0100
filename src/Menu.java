@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 //import java.awt.event.*;
 import javax.swing.border.Border;
-
+import java.util.Timer;
 public class Menu {
 	JFrame frame = new JFrame("Click Click Go");
 	private JPanel deck = new JPanel();
@@ -27,7 +27,9 @@ public class Menu {
         frame.setVisible(true);
 	}
 	public void MainMenu(Container pane) {
+		ImagePanel background = new ImagePanel("background1.jpg");
 		pane.setLayout(new BorderLayout()); //make pane border layout
+		pane.add(background);
 		//int gold = player.getCurrency(); //will be used to create JLabel to show gold
 		JPanel BottomButtons = new JPanel(); //JPanel to hold buttons that will be on bottom of the screen
 		BottomButtons.setLayout(new GridLayout(1,3,1,1)); //makes JPanel a grid that is 1 by 3 and has a horizontal and vertical gap of 1
@@ -39,7 +41,6 @@ public class Menu {
 		JButton MainFightButton = new JButton("Fight");
 		JButton MainStatsButton = new JButton("Stats");
 		JButton MainQuitButton = new JButton("<html><font color=red size=4><b>Quit</b></html>");
-		MainQuitButton.setBorder(blackLine);
 		
 		//add buttons to BottomButtons Panel
 		BottomButtons.add(MainShopButton);
@@ -81,7 +82,7 @@ public class Menu {
 		deck.add(pane, "main");
 	}
 	public void shop(Container pane) {
-		JLabel goldLabel, levelLabel;
+		JLabel goldLabel;
 		JButton ShopQuit = new JButton("<html><font color=red size=4><b>Quit</b></html>");
 		JButton ShopFightButton = new JButton("Fight");
 		JButton ShopStatsButton = new JButton("Stats");
@@ -95,7 +96,7 @@ public class Menu {
 		ShopQuit.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed (ActionEvent e) { //go back to start menu
-				  LAYOUT.previous(deck);
+				  LAYOUT.show(deck, "start");
 				 }
 			});
 
@@ -121,16 +122,39 @@ public class Menu {
 		goldLabel.setBorder(goldAndLevel);
 		pane.add(goldLabel);
 		 
+
+		// JPanel that will hold all of the buy weapons buttons 
+		JPanel buyButtons = new JPanel();
+		buyButtons.setLayout(new GridLayout(1,3,1,1));
+	
 		// buy button for axe
 		ImageIcon axe = new ImageIcon("wip_axe.jpg");
 		JButton axeButton = new JButton(axe);
-		axeButton.setBounds(40, 95, 100, 95);
-		pane.add(axeButton);
-		
+		buyButtons.add(axeButton); // add axeButton to buyButtons panel 
+				
 		// buy button for bow
 		ImageIcon bow = new ImageIcon("wip_bow.jpg");
 		JButton bowButton = new JButton(bow);
-		pane.add(bowButton);
+		buyButtons.add(bowButton); // add bowButton to buyButtons panel
+
+		// buy button for dagger
+		ImageIcon dagger = new ImageIcon("wip_dagger.jpg");
+		JButton daggerButton = new JButton(dagger);
+		buyButtons.add(daggerButton); // add daggerButton to buyButtons panel		
+		
+		// buy button for spear 
+		ImageIcon spear = new ImageIcon("wip_spear.jpg");
+		JButton spearButton = new JButton(spear);
+		buyButtons.add(spearButton);	// add spearButton to buyButtons panel
+		
+		// buy button for sword
+		ImageIcon sword = new ImageIcon("wip_sword.jpg");
+		JButton swordButton = new JButton(sword);
+		buyButtons.add(swordButton); 	// add swordButton to buyButtons panel
+		
+		// adds buyButtons to end of pane 
+		pane.add(buyButtons, BorderLayout.PAGE_END); 
+				
 		
 		//buy button for dagger
 		ImageIcon dagger = new ImageIcon("wip_dagger.jpg");
@@ -152,6 +176,10 @@ public class Menu {
 		pane.add(healthButton);
 		
 		deck.add(pane,"shop");
+	}
+	public void fight(Container pane){
+		Timer timer = new Timer(); //Created start of timer
+		
 	}
 	public void start(Container pane) {
 		JLabel startImg  = new JLabel();

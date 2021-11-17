@@ -3,12 +3,17 @@ public class weapons {
 	
 	double damage;
 	int level;
-	private weaponType weapon; 
-	
+	private weaponType weaponType; 
+	public weapons(weaponType type) {
+		damage = 0;
+		level = 0;
+		weaponType = type;
+	}
+	/*
 	public enum weaponType {
 		Sword, Axe, Bow, Spear, Dagger
 	}
-	
+	*/
 	
 	public double getDamage() {
 		return damage;
@@ -27,7 +32,7 @@ public class weapons {
 	}
 	
 	public weaponType getType() {
-		
+		/*
 		switch(weapon) {
 		case Sword:
 			return weaponType.Sword; 
@@ -44,7 +49,8 @@ public class weapons {
 		case Dagger:
 			return weaponType.Dagger;
 		}
-		return weapon; 
+		*/
+		return weaponType; 
 	}
 	
 }
