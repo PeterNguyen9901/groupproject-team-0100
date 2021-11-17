@@ -11,6 +11,7 @@ public class Menu {
 	private JPanel mainPanel = new JPanel();
 	private JPanel shopPanel = new JPanel();
 	private JPanel startPanel = new JPanel();
+	private JPanel fightPanel = new JPanel();
 	CardLayout LAYOUT = new CardLayout();
 	Character player = new Character();
 	Level GameLevel = new Level();
@@ -204,7 +205,7 @@ public class Menu {
 		fightQuit.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed (ActionEvent e) {
-				  System.exit(0);
+				LAYOUT.previous(deck);
 				 }
 			});
 
