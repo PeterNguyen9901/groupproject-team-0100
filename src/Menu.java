@@ -13,6 +13,11 @@ public class Menu {
 	private JPanel startPanel = new JPanel();
 	CardLayout LAYOUT = new CardLayout();
 	Character player = new Character();
+	Level GameLevel = new Level();
+	HP playerHp = new HP();
+	//Monster monsterHp = new Monster();
+	
+	
 	public Menu() {
 		deck.setLayout(LAYOUT);
 		
@@ -31,10 +36,17 @@ public class Menu {
 		pane.setLayout(new BorderLayout()); //make pane border layout
 		pane.add(background);
 		//int gold = player.getCurrency(); //will be used to create JLabel to show gold
+		//int level = GameLevel.getLevel();
 		JPanel BottomButtons = new JPanel(); //JPanel to hold buttons that will be on bottom of the screen
+		JPanel TopButtons = new JPanel();
 		BottomButtons.setLayout(new GridLayout(1,3,1,1)); //makes JPanel a grid that is 1 by 3 and has a horizontal and vertical gap of 1
 		Border blackLine = BorderFactory.createLineBorder(Color.black);
 		
+		//creates label
+		JLabel gold1 = new JLabel();
+		//gold1.setText("Gold: " + String.valueOf(gold));
+		JLabel levels = new JLabel();
+		//levels.setText("Level: " + String.valueOf(level));
 		
 		//creates buttons
 		JButton MainShopButton = new JButton("Shop");
@@ -50,10 +62,14 @@ public class Menu {
 		BottomButtons.add(MainShopButton);
 		BottomButtons.add(MainFightButton);
 		BottomButtons.add(MainStatsButton);
-		BottomButtons.add(MainQuitButton);
+		
+		TopButtons.add(MainQuitButton);
+		TopButtons.add(gold1);
+		TopButtons.add(levels);
 		
 		//Add JPanel to the bottom of pane 
 		pane.add(BottomButtons, BorderLayout.PAGE_END);
+		pane.add(TopButtons, BorderLayout.PAGE_START);
 		
 		//action listener for shop button
 		MainShopButton.addActionListener(new ActionListener(){
@@ -164,6 +180,34 @@ public class Menu {
 	}
 	public void fight(Container pane){
 		Timer timer = new Timer(); //Created start of timer
+		JPanel TopButtons = new JPanel();
+		
+		JButton fightQuit = new JButton();
+		Border blackLine = BorderFactory.createLineBorder(Color.black);
+		fightQuit.setBorder(blackLine);
+		
+		
+		
+		
+		
+		JLabel enemyHp = new JLabel();
+		JLabel playerHp = new JLabel();
+		JLabel goldandLevel = new JLabel();
+		
+		
+		TopButtons.add(fightQuit);
+		TopButtons.add(enemyHp);
+		TopButtons.add(playerHp);
+		TopButtons.add(goldandLevel);
+		
+		pane.add(TopButtons);
+		fightQuit.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed (ActionEvent e) {
+				  System.exit(0);
+				 }
+			});
+
 		
 	}
 	public void start(Container pane) {
