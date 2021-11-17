@@ -1,8 +1,13 @@
 public class Monster {
 	private int Health;
 	private int Attack;
-	//private MonsterType MonType;
-	//private WeaponType Weakness;
+	private monsterType MonType;
+	//private weaponType Weakness;
+	public Monster(monsterType monType) {
+		MonType = monType;
+		Health = 50;
+		Attack = 5;
+	}
 	public int getHP() {
 		return Health;
 	}
@@ -15,10 +20,10 @@ public class Monster {
 	public void setAtk(int n) {
 		Attack = n;
 	}
-	/*
-	 public MonsterType getMonType(){
+	
+	 public monsterType getMonType(){
 	 	return MonType;
-	 }
+	 }/*
 	 public WeaponType getWeakness(){
 	 	return Weakness;
 	 }
