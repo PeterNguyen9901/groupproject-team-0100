@@ -4,6 +4,7 @@ public class Monster {
 	private monsterType MonType;
 	public Monster(monsterType monType) {
 		MonType = monType;
+		health = new HP();
 		health.setHp(50);
 		Attack = 5;
 	}
