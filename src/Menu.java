@@ -12,7 +12,7 @@ public class Menu {
 	private JPanel shopPanel = new JPanel();
 	private JPanel startPanel = new JPanel();
 	CardLayout LAYOUT = new CardLayout();
-	Character player = new Character();
+	//Character player = new Character();
 	public Menu() {
 		deck.setLayout(LAYOUT);
 		
@@ -155,22 +155,6 @@ public class Menu {
 		// adds buyButtons to end of pane 
 		pane.add(buyButtons, BorderLayout.PAGE_END); 
 				
-		
-		//buy button for dagger
-		ImageIcon dagger = new ImageIcon("wip_dagger.jpg");
-		JButton daggerButton = new JButton(dagger);
-		pane.add(daggerButton);
-		
-		//buy button for spear
-		ImageIcon spear = new ImageIcon("wip_spear.jpg");
-		JButton spearButton = new JButton(spear);
-		pane.add(spearButton);
-		
-		//buy button for sword
-		ImageIcon sword = new ImageIcon("wip_sword.jpg");
-		JButton swordButton = new JButton(sword);
-		pane.add(swordButton);
-		
 		//buy button for health
 		JButton healthButton = new JButton("Upgrade");
 		pane.add(healthButton);
@@ -179,7 +163,30 @@ public class Menu {
 	}
 	public void fight(Container pane){
 		Timer timer = new Timer(); //Created start of timer
+		JButton FightQuit = new JButton("<html><font color=red size=4><b>Quit</b></html>");
+		JButton FightMainButton = new JButton("Main");
+		pane.add(FightQuit, BorderLayout.NORTH); 
 		
+		//Creates layout of all buttons in fight menu
+		JPanel fightButtons = new JPanel();
+		fightButtons.setLayout(new GridLayout(1,3,1,1));
+		
+		//Quit Button, going back to start menu
+		FightQuit.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed (ActionEvent e) { //go back to start menu
+				  LAYOUT.show(deck, "start");
+				 }
+			});
+
+		FightMainButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				LAYOUT.show(deck, "main");
+			}
+		});
+		
+		deck.add(pane, "fight");
 	}
 	public void start(Container pane) {
 		JLabel startImg  = new JLabel();
