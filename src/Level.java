@@ -1,7 +1,9 @@
 
 class Level {
-	private int level = 1;
-
+	private int level;
+	public Level() {
+		level = 1;
+	}
 	
 	public int getLevel() {
 		return level;

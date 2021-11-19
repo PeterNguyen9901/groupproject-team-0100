@@ -1,16 +1,18 @@
 
 class HP {
-	private int HP;
+	private int Health;
 	private int characterDeath;
 	
-	
+	public HP() {
+		Health = 20;
+	}
 	public int getHp() {
-		return HP;
+		return Health;
 	}
 
 
 	public void setHp(int HP) {
-		this.HP = HP;
+		Health = HP;
 	}
 	
 	public int getCharacterDeath() {
@@ -23,8 +25,8 @@ class HP {
 	}
 	
 	public double takeDamage(int dmg) {
-		HP = HP - dmg;
-		if (HP==0) {
+		Health -= dmg;
+		if (Health==0) {
 			characterDeath++;
 			//return to start of game
 		}
