@@ -3,30 +3,31 @@ class HP {
 	private int Health;
 	private int characterDeath;
 	
-	public HP() {
+	public HP() {//constructor
 		Health = 20;
+		characterDeath = 0;
 	}
-	public int getHp() {
+	public int getHp() {//getter for health
 		return Health;
 	}
 
 
-	public void setHp(int HP) {
+	public void setHp(int HP) {//setter for health
 		Health = HP;
 	}
 	
-	public int getCharacterDeath() {
+	public int getCharacterDeath() {//getter for amount of death
 		return characterDeath;
 	}
 
 
-	public void setCharacterDeath(int characterDeath) {
+	public void setCharacterDeath(int characterDeath) {//setter for amount of death
 		this.characterDeath = characterDeath;
 	}
 	
-	public double takeDamage(int dmg) {
+	public double takeDamage(int dmg) {//damage
 		Health -= dmg;
-		if (Health==0) {
+		if (Health <= 0) {
 			characterDeath++;
 			//return to start of game
 		}
