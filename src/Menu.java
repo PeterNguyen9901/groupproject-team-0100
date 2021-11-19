@@ -13,6 +13,9 @@ public class Menu {
 	private JPanel startPanel = new JPanel();
 	private JPanel fightPanel = new JPanel();
 	CardLayout LAYOUT = new CardLayout();
+
+	//Character player = new Character();
+
 	Character player = new Character();
 	Level GameLevel = new Level();
 	HP playerHp = new HP();
@@ -25,7 +28,7 @@ public class Menu {
 		start(startPanel);
 		MainMenu(mainPanel);
 		shop(shopPanel);
-		fight(fightPanel);
+		//fight(fightPanel);
 		
 		LAYOUT.show(deck, "start");
 		frame.add(deck);
@@ -178,11 +181,20 @@ public class Menu {
 		// adds buyButtons to end of pane 
 		pane.add(buyButtons, BorderLayout.PAGE_END); 
 				
+		//buy button for health
+		JButton healthButton = new JButton("Upgrade");
+		pane.add(healthButton);
 		
 		deck.add(pane,"shop");
 	}
+	
+	/*
 	public void fight(Container pane){
 		Timer timer = new Timer(); //Created start of timer
+		color=red size=4><b>Quit</b></html>");
+		JButton FightMainButton = new JButton("Main");
+		pane.add(FightQuit, BorderLayout.NORTH); 
+
 		JPanel TopButtons = new JPanel();
 		
 		JButton fightQuit = new JButton();
@@ -211,9 +223,30 @@ public class Menu {
 				 }
 			});
 		deck.add(pane, "fight");
-
 		
+		//Creates layout of all buttons in fight menu
+		JPanel fightButtons = new JPanel();
+		fightButtons.setLayout(new GridLayout(1,3,1,1));
+		
+		//Quit Button, going back to start menu
+		FightQuit.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed (ActionEvent e) { //go back to start menu
+				  LAYOUT.show(deck, "start");
+				 }
+			});
+
+		FightMainButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				LAYOUT.show(deck, "main");
+			}
+		});
+		
+		deck.add(pane, "fight");
 	}
+	*/
+	
 	public void start(Container pane) {
 		ImagePanel background = new ImagePanel("castle1.jpg");
 		pane.setLayout(new BorderLayout()); 
