@@ -14,7 +14,7 @@ public class Menu {
 	private JPanel fightPanel = new JPanel();
 	CardLayout LAYOUT = new CardLayout();
 
-	//Character player = new Character();
+	
 
 	Character player = new Character();
 	Level GameLevel = new Level();
@@ -28,7 +28,7 @@ public class Menu {
 		start(startPanel);
 		MainMenu(mainPanel);
 		shop(shopPanel);
-		//fight(fightPanel);
+		fight(fightPanel);
 		
 		LAYOUT.show(deck, "start");
 		frame.add(deck);
@@ -39,20 +39,45 @@ public class Menu {
 	}
 	public void MainMenu(Container pane) {
 		ImagePanel background = new ImagePanel("background1.jpg");
+		background.setLayout(new BorderLayout());
 		pane.setLayout(new BorderLayout()); //make pane border layout
+		
+		
+		int gold = player.getCurrency(); //will be used to create JLabel to show gold
+		int level = GameLevel.getLevel();
+		
+		
+		ImageIcon characterPicture = new ImageIcon("Gifcharacter.gif");
+		JLabel character = new JLabel(characterPicture);
+		character.setOpaque(false);
+		character.setMaximumSize(new Dimension(60,60));
+		character.setPreferredSize(new Dimension(60,60));
+		character.setMinimumSize(new Dimension(60,60));
+		background.add(character);
 		pane.add(background);
-		//int gold = player.getCurrency(); //will be used to create JLabel to show gold
-		//int level = GameLevel.getLevel();
+		
+		
+		
+		
 		JPanel BottomButtons = new JPanel(); //JPanel to hold buttons that will be on bottom of the screen
 		JPanel TopButtons = new JPanel();
+		//JPanel MiddleButtons = new JPanel();
+		
+		
 		BottomButtons.setLayout(new GridLayout(1,3,1,1)); //makes JPanel a grid that is 1 by 3 and has a horizontal and vertical gap of 1
 		Border blackLine = BorderFactory.createLineBorder(Color.black);
 		
+		
 		//creates label
-		JLabel gold1 = new JLabel();
-		//gold1.setText("Gold: " + String.valueOf(gold));
-		JLabel levels = new JLabel();
-		//levels.setText("Level: " + String.valueOf(level));
+		JLabel goldAndLevel = new JLabel();
+		String gold1 = String.valueOf(gold);
+		String level1 = String.valueOf(level);
+		
+		String goldStr = "<html>Gold: ";
+		String levelStr = "<br/>Level: ";
+		String FullText = goldStr + gold1 + levelStr + level1;
+		goldAndLevel.setText(FullText);
+		goldAndLevel.setBorder(blackLine);
 		
 		//creates buttons
 		JButton MainShopButton = new JButton("Shop");
@@ -70,12 +95,15 @@ public class Menu {
 		BottomButtons.add(MainStatsButton);
 		
 		TopButtons.add(MainQuitButton);
-		TopButtons.add(gold1);
-		TopButtons.add(levels);
+		TopButtons.add(goldAndLevel);
+		//TopButtons.add(character);
+		
+		//MiddleButtons.add(character);
 		
 		//Add JPanel to the bottom of pane 
 		pane.add(BottomButtons, BorderLayout.PAGE_END);
 		pane.add(TopButtons, BorderLayout.PAGE_START);
+		//pane.add(MiddleButtons, BorderLayout.CENTER);
 		
 		//action listener for shop button
 		MainShopButton.addActionListener(new ActionListener(){
@@ -188,16 +216,15 @@ public class Menu {
 		deck.add(pane,"shop");
 	}
 	
-	/*
+	
 	public void fight(Container pane){
 		Timer timer = new Timer(); //Created start of timer
-		color=red size=4><b>Quit</b></html>");
 		JButton FightMainButton = new JButton("Main");
-		pane.add(FightQuit, BorderLayout.NORTH); 
+		pane.add(FightMainButton, BorderLayout.NORTH); 
 
 		JPanel TopButtons = new JPanel();
 		
-		JButton fightQuit = new JButton();
+		JButton fightQuit = new JButton("<html><font color=red size=4><b>Quit</b></html>");
 		Border blackLine = BorderFactory.createLineBorder(Color.black);
 		fightQuit.setBorder(blackLine);
 		
@@ -216,12 +243,7 @@ public class Menu {
 		TopButtons.add(goldandLevel);
 		
 		pane.add(TopButtons);
-		fightQuit.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed (ActionEvent e) {
-				LAYOUT.previous(deck);
-				 }
-			});
+		
 		deck.add(pane, "fight");
 		
 		//Creates layout of all buttons in fight menu
@@ -229,7 +251,7 @@ public class Menu {
 		fightButtons.setLayout(new GridLayout(1,3,1,1));
 		
 		//Quit Button, going back to start menu
-		FightQuit.addActionListener(new ActionListener(){
+		fightQuit.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed (ActionEvent e) { //go back to start menu
 				  LAYOUT.show(deck, "start");
@@ -245,7 +267,7 @@ public class Menu {
 		
 		deck.add(pane, "fight");
 	}
-	*/
+	
 	
 	public void start(Container pane) {
 		ImagePanel background = new ImagePanel("castle1.jpg");
