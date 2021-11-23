@@ -12,6 +12,7 @@ public class Menu {
 	private JPanel shopPanel = new JPanel();
 	private JPanel startPanel = new JPanel();
 	private JPanel fightPanel = new JPanel();
+	private JPanel statsPanel = new JPanel();
 	CardLayout LAYOUT = new CardLayout();
 
 	
@@ -29,6 +30,7 @@ public class Menu {
 		MainMenu(mainPanel);
 		shop(shopPanel);
 		fight(fightPanel);
+		stats(statsPanel);
 		
 		LAYOUT.show(deck, "start");
 		frame.add(deck);
@@ -268,6 +270,22 @@ public class Menu {
 		deck.add(pane, "fight");
 	}
 	
+	public void stats(Container pane) {
+		JButton statsQuit = new JButton("<html><font color=red size=4><b>Quit</b></html>");
+		
+		pane.add(statsQuit, BorderLayout.NORTH); 
+		statsQuit.addActionListener(new ActionListener() {
+			@Override 
+			public void actionPerformed(ActionEvent e) { //goes back to start menu when QUIT is clicked in stats menu 
+				LAYOUT.show(deck, "start");
+			}
+		});
+		
+		
+		
+		deck.add(pane, "stats"); 
+	}
+
 	
 	public void start(Container pane) {
 		ImagePanel background = new ImagePanel("castle1.jpg");
