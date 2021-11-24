@@ -162,6 +162,21 @@ public class Menu {
 				LAYOUT.show(deck, "main");
 			}
 		});
+		
+		ShopStatsButton.addActionListener(new ActionListener() { // go to stats menu
+			@Override 
+			public void actionPerformed(ActionEvent e) {
+				LAYOUT.show(deck, "stats");;
+			}
+		});
+		
+		ShopFightButton.addActionListener(new ActionListener() { // go to fight menu
+			@Override 
+			public void actionPerformed(ActionEvent e) {
+				LAYOUT.show(deck, "fight");;
+			}
+		});
+		
 		Border goldAndLevel = BorderFactory.createLineBorder(Color.orange);
 		goldLabel = new JLabel(); 
 		Gold g = new Gold();
@@ -271,9 +286,10 @@ public class Menu {
 	}
 	
 	public void stats(Container pane) {
+		
 		JButton statsQuit = new JButton("<html><font color=red size=4><b>Quit</b></html>");
 		
-		pane.add(statsQuit, BorderLayout.NORTH); 
+		pane.add(statsQuit, BorderLayout.PAGE_START); 
 		statsQuit.addActionListener(new ActionListener() {
 			@Override 
 			public void actionPerformed(ActionEvent e) { //goes back to start menu when QUIT is clicked in stats menu 
@@ -281,7 +297,61 @@ public class Menu {
 			}
 		});
 		
+		JButton statsShopButton = new JButton("Shop");
+		pane.add(statsShopButton);
+		JButton statsFightButton = new JButton("Fight");
+		pane.add(statsFightButton,BorderLayout.PAGE_START);
 		
+		statsShopButton.addActionListener(new ActionListener() { // goes to shop menu if Shop is clicked in stats menu 
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				LAYOUT.show(deck, "shop");
+			}
+		});
+		
+		statsFightButton.addActionListener(new ActionListener() { // goes to fight menu if Fight is clicked in stats menu 
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				LAYOUT.show(deck, "fight"); 
+			}
+		});
+		
+		// holds all the labels 
+		JPanel labels = new JPanel(new GridLayout(4,1,10,10));
+		//labels.setLayout(new GridLayout(4,1,10,10));
+		
+		Border blackBorder = BorderFactory.createLineBorder(Color.BLACK);
+		// damage label 
+		JLabel damage = new JLabel();
+		String damageStr = "<html><font size=8>Damage:</html>";
+		damage.setText(damageStr);
+		damage.setBorder(blackBorder);
+		labels.add(damage); 
+		 
+		
+		// kills label 
+		JLabel kills = new JLabel();
+		String killStr = "<html><font size=8>Kills:</font></html>";
+		kills.setText(killStr);
+		kills.setBorder(blackBorder);
+		labels.add(kills);
+		
+		// deaths label 
+		JLabel deaths = new JLabel();
+		String deathStr = "<html><font size=8>Deaths:";
+		deaths.setText(deathStr);
+		deaths.setBorder(blackBorder);
+		labels.add(deaths);
+		
+		// level label 
+		JLabel level = new JLabel();
+		String levelStr = "<html><font size=8>Level:";
+		level.setText(levelStr);
+		level.setBorder(blackBorder);
+		labels.add(level); 
+		
+		// adds all the labels to pane
+		pane.add(labels, BorderLayout.PAGE_END); 
 		
 		deck.add(pane, "stats"); 
 	}
