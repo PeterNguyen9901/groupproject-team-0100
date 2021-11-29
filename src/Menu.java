@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 //import java.awt.event.*;
 import javax.swing.border.Border;
 import java.util.Timer;
+import java.util.TimerTask;
 public class Menu {
 	JFrame frame = new JFrame("Click Click Go");
 	private JPanel deck = new JPanel();
@@ -234,7 +235,6 @@ public class Menu {
 	
 	
 	public void fight(Container pane){
-		Timer timer = new Timer(); //Created start of timer
 		JButton FightMainButton = new JButton("Main");
 		pane.add(FightMainButton, BorderLayout.NORTH); 
 
@@ -244,7 +244,17 @@ public class Menu {
 
 		fightQuit.setBorder(blackLine);
 		
-		
+		Timer timer = new Timer(); // Base Timer code for now  
+		JLabel start = new JLabel();
+		class Helper extends TimerTask{
+		    public static int i = 3;
+		    public void run() {
+		    	start.setText(String.valueOf(+ i++));
+		    }
+		}
+		TimerTask task = new Helper();
+		timer.schedule(task,0, 1000);
+		pane.add(start, BorderLayout.CENTER);
 		
 		
 		
