@@ -21,7 +21,7 @@ public class Menu {
 	Character player = new Character();
 	Level GameLevel = new Level();
 	HP playerHp = new HP();
-	//Monster monsterHp = new Monster();
+	Monster monsterHp = new Monster(null, 0);
 	
 	
 	public Menu() {
@@ -235,10 +235,13 @@ public class Menu {
 	
 	
 	public void fight(Container pane){
-		JButton FightMainButton = new JButton("Main");
-		pane.add(FightMainButton, BorderLayout.NORTH); 
+		int gold = player.getCurrency(); //will be used to create JLabel to show gold
+		int level = GameLevel.getLevel();
+		HP MonsterHp = monsterHp.getHP();
+		int CharacterHp = player.getHP();
 
 		JPanel TopButtons = new JPanel();
+		TopButtons.setLayout(new GridLayout(1,3,1,1));
 		
 		JButton fightQuit = new JButton("<html><font color=red size=4><b>Quit</b></html>");
 
@@ -254,21 +257,37 @@ public class Menu {
 		}
 		TimerTask task = new Helper();
 		timer.schedule(task,0, 1000);
-		pane.add(start, BorderLayout.CENTER);
+		pane.add(start);
+		
+		JLabel goldAndLevel = new JLabel();
+		String gold1 = String.valueOf(gold);
+		String level1 = String.valueOf(level);
+		
+		String goldStr = "<html>Gold: ";
+		String levelStr = "<br/>Level: ";
+		String FullText = goldStr + gold1 + levelStr + level1;
+		goldAndLevel.setText(FullText);
+		goldAndLevel.setBorder(blackLine);
+		
+		JLabel MonCharHp = new JLabel();
+		String mHp = String.valueOf(MonsterHp);
+		String cHp = String.valueOf(CharacterHp);
+		
+		String mHpStr = "<html>Gold: ";
+		String cHpStr = "<br/>Level: ";
+		String text = mHpStr + mHp + cHpStr + cHp;
+		goldAndLevel.setText(text);
+		goldAndLevel.setBorder(blackLine);
 		
 		
-		
-		JLabel enemyHp = new JLabel();
-		JLabel playerHp = new JLabel();
-		JLabel goldandLevel = new JLabel();
+	
 		
 		
 		TopButtons.add(fightQuit);
-		TopButtons.add(enemyHp);
-		TopButtons.add(playerHp);
-		TopButtons.add(goldandLevel);
+		TopButtons.add(MonCharHp);
+		TopButtons.add(goldAndLevel);
 		
-		pane.add(TopButtons);
+		pane.add(TopButtons, BorderLayout.PAGE_START);
 		
 		deck.add(pane, "fight");
 		
@@ -284,12 +303,6 @@ public class Menu {
 				 }
 			});
 
-		FightMainButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				LAYOUT.show(deck, "main");
-			}
-		});
 		
 		deck.add(pane, "fight");
 	}
