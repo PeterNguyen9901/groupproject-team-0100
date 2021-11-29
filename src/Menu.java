@@ -14,7 +14,7 @@ public class Menu {
 	private JPanel fightPanel = new JPanel();
 	private JPanel statsPanel = new JPanel();
 	CardLayout LAYOUT = new CardLayout();
-
+	private Border blackLine = BorderFactory.createLineBorder(Color.black);
 	
 
 	Character player = new Character();
@@ -67,7 +67,6 @@ public class Menu {
 		
 		
 		BottomButtons.setLayout(new GridLayout(1,3,1,1)); //makes JPanel a grid that is 1 by 3 and has a horizontal and vertical gap of 1
-		Border blackLine = BorderFactory.createLineBorder(Color.black);
 		
 		
 		//creates label
@@ -242,7 +241,7 @@ public class Menu {
 		JPanel TopButtons = new JPanel();
 		
 		JButton fightQuit = new JButton("<html><font color=red size=4><b>Quit</b></html>");
-		Border blackLine = BorderFactory.createLineBorder(Color.black);
+
 		fightQuit.setBorder(blackLine);
 		
 		
@@ -286,10 +285,15 @@ public class Menu {
 	}
 	
 	public void stats(Container pane) {
+		pane.setLayout(new BorderLayout());
+		
+		JPanel BottomButtons = new JPanel();
+		BottomButtons.setLayout(new GridLayout(1,3,1,1));
 		
 		JButton statsQuit = new JButton("<html><font color=red size=4><b>Quit</b></html>");
-		
-		pane.add(statsQuit, BorderLayout.PAGE_START); 
+		statsQuit.setBorder(blackLine);
+		BottomButtons.add(statsQuit);
+
 		statsQuit.addActionListener(new ActionListener() {
 			@Override 
 			public void actionPerformed(ActionEvent e) { //goes back to start menu when QUIT is clicked in stats menu 
@@ -298,9 +302,14 @@ public class Menu {
 		});
 		
 		JButton statsShopButton = new JButton("Shop");
-		pane.add(statsShopButton);
+		statsShopButton.setBorder(blackLine);
+		BottomButtons.add(statsShopButton);
+		
 		JButton statsFightButton = new JButton("Fight");
-		pane.add(statsFightButton,BorderLayout.PAGE_START);
+		statsFightButton.setBorder(blackLine);
+		BottomButtons.add(statsFightButton);
+		
+		pane.add(BottomButtons, BorderLayout.PAGE_END);
 		
 		statsShopButton.addActionListener(new ActionListener() { // goes to shop menu if Shop is clicked in stats menu 
 			@Override
@@ -320,12 +329,11 @@ public class Menu {
 		JPanel labels = new JPanel(new GridLayout(4,1,10,10));
 		//labels.setLayout(new GridLayout(4,1,10,10));
 		
-		Border blackBorder = BorderFactory.createLineBorder(Color.BLACK);
 		// damage label 
 		JLabel damage = new JLabel();
 		String damageStr = "<html><font size=8>Damage:</html>";
 		damage.setText(damageStr);
-		damage.setBorder(blackBorder);
+		damage.setBorder(blackLine);
 		labels.add(damage); 
 		 
 		
@@ -333,25 +341,25 @@ public class Menu {
 		JLabel kills = new JLabel();
 		String killStr = "<html><font size=8>Kills:</font></html>";
 		kills.setText(killStr);
-		kills.setBorder(blackBorder);
+		kills.setBorder(blackLine);
 		labels.add(kills);
 		
 		// deaths label 
 		JLabel deaths = new JLabel();
 		String deathStr = "<html><font size=8>Deaths:";
 		deaths.setText(deathStr);
-		deaths.setBorder(blackBorder);
+		deaths.setBorder(blackLine);
 		labels.add(deaths);
 		
 		// level label 
 		JLabel level = new JLabel();
 		String levelStr = "<html><font size=8>Level:";
 		level.setText(levelStr);
-		level.setBorder(blackBorder);
+		level.setBorder(blackLine);
 		labels.add(level); 
 		
 		// adds all the labels to pane
-		pane.add(labels, BorderLayout.PAGE_END); 
+		pane.add(labels, BorderLayout.PAGE_START); 
 		
 		deck.add(pane, "stats"); 
 	}
