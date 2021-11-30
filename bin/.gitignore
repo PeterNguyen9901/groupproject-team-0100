@@ -1,10 +1,17 @@
 /Character.class
 /Damage.class
-/Displayable.class
 /Gold.class
 /HP.class
+/ImagePanel.class
 /Level.class
 /Menu$1.class
+/Menu$10.class
+/Menu$11.class
+/Menu$12.class
+/Menu$13.class
+/Menu$14.class
+/Menu$15.class
+/Menu$1Helper.class
 /Menu$2.class
 /Menu$3.class
 /Menu$4.class
@@ -17,8 +24,4 @@
 /Monster.class
 /monsterType.class
 /weaponType.class
-/weapons$weaponType.class
 /weapons.class
-/ImagePanel.class
-/Menu$10.class
-/Menu$11.class
