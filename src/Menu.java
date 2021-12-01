@@ -332,15 +332,24 @@ public class Menu {
 			}
 		});
 		
+		JButton statsFightButton = new JButton("Main");
+		statsFightButton.setBorder(blackLine);
+		BottomButtons.add(statsFightButton);
+		
 		JButton statsShopButton = new JButton("Shop");
 		statsShopButton.setBorder(blackLine);
 		BottomButtons.add(statsShopButton);
 		
-		JButton statsFightButton = new JButton("Fight");
-		statsFightButton.setBorder(blackLine);
-		BottomButtons.add(statsFightButton);
 		
 		pane.add(BottomButtons, BorderLayout.PAGE_END);
+		
+		
+		statsFightButton.addActionListener(new ActionListener() { // goes to fight menu if Fight is clicked in stats menu 
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				LAYOUT.show(deck, "main"); 
+			}
+		});
 		
 		statsShopButton.addActionListener(new ActionListener() { // goes to shop menu if Shop is clicked in stats menu 
 			@Override
@@ -349,12 +358,6 @@ public class Menu {
 			}
 		});
 		
-		statsFightButton.addActionListener(new ActionListener() { // goes to fight menu if Fight is clicked in stats menu 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				LAYOUT.show(deck, "fight"); 
-			}
-		});
 		
 		// holds all the labels 
 		JPanel labels = new JPanel(new GridLayout(4,1,10,10));
