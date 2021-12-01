@@ -37,7 +37,7 @@ public class Menu {
 		frame.add(deck);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
-        frame.setSize(500,500);
+        frame.setSize(800,800);
         frame.setVisible(true);
 	}
 	public void MainMenu(Container pane) {
@@ -138,17 +138,25 @@ public class Menu {
 		deck.add(pane, "main");
 	}
 	public void shop(Container pane) {
+		pane.setLayout(new BorderLayout());
+		JPanel BottomButtons = new JPanel(); //JPanel to hold buttons that will be on bottom of the screen
+		BottomButtons.setLayout(new GridLayout(1,4,1,1)); //makes JPanel a grid that is 1 by 3 and has a horizontal and vertical gap of 1
 		JLabel goldLabel;
 		JButton ShopQuit = new JButton("<html><font color=red size=4><b>Quit</b></html>");
 		JButton ShopFightButton = new JButton("Fight");
 		JButton ShopStatsButton = new JButton("Stats");
 		JButton ShopMainButton = new JButton("Main");
-		pane.add(ShopQuit, BorderLayout.NORTH); 
+		//pane.add(ShopQuit, BorderLayout.NORTH); 
 		//pane.add(new Button("Buy")); I think we don't need a buy button and instead we can have button with pictures of weapon 
 		//and when clicked on, it will buy the weapon
-		pane.add(ShopMainButton);
-		pane.add(ShopFightButton);
-		pane.add(ShopStatsButton);
+		//pane.add(ShopMainButton);
+		//pane.add(ShopFightButton);
+		//pane.add(ShopStatsButton);
+		BottomButtons.add(ShopQuit);
+		BottomButtons.add(ShopFightButton);
+		BottomButtons.add(ShopMainButton);
+		BottomButtons.add(ShopStatsButton);
+		
 		ShopQuit.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed (ActionEvent e) { //go back to start menu
@@ -224,8 +232,8 @@ public class Menu {
 		buyButtons.add(swordButton); 	// add swordButton to buyButtons panel
 		
 		// adds buyButtons to end of pane 
-		pane.add(buyButtons, BorderLayout.PAGE_END); 
-				
+		pane.add(buyButtons, BorderLayout.PAGE_START); 
+		pane.add(BottomButtons, BorderLayout.PAGE_END);
 		//buy button for health
 		JButton healthButton = new JButton("Upgrade");
 		pane.add(healthButton);
