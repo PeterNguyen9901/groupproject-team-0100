@@ -247,7 +247,9 @@ public class Menu {
 		ImagePanel background = new ImagePanel("background 2.jpg");
 		background.setLayout(new BorderLayout());
 		pane.setLayout(new BorderLayout()); 
-		pane.add(background);
+
+		
+		
 		
 		int gold = player.getCurrency(); //will be used to create JLabel to show gold
 		int level = GameLevel.getLevel();
@@ -258,8 +260,19 @@ public class Menu {
 		TopButtons.setLayout(new GridLayout(1,4,1,1));
 		
 		JButton fightQuit = new JButton("<html><font color=red size=4><b>Quit</b></html>");
+		
 
 		fightQuit.setBorder(blackLine);
+		
+
+		ImageIcon slimePicture = new ImageIcon("slime.png");
+		JLabel slime = new JLabel(slimePicture);
+		slime.setOpaque(false);
+		slime.setMaximumSize(new Dimension(60,60));
+		slime.setPreferredSize(new Dimension(60,60));
+		slime.setMinimumSize(new Dimension(60,60));
+		background.add(slime);
+		pane.add(background);
 		
 		Timer timer = new Timer(); // Base Timer code for now  
 		JLabel start = new JLabel();
@@ -287,11 +300,11 @@ public class Menu {
 		String mHp = String.valueOf(MonsterHp);
 		String cHp = String.valueOf(CharacterHp);
 		
-		String mHpStr = "<html>Gold: ";
-		String cHpStr = "<br/>Level: ";
+		String mHpStr = "<html>Monster Health: ";
+		String cHpStr = "<br/>Character Health: ";
 		String text = mHpStr + mHp + cHpStr + cHp;
-		goldAndLevel.setText(text);
-		goldAndLevel.setBorder(blackLine);
+		MonCharHp.setText(text);
+		MonCharHp.setBorder(blackLine);
 		
 		
 	
