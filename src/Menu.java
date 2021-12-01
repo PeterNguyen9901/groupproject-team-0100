@@ -243,13 +243,19 @@ public class Menu {
 	
 	
 	public void fight(Container pane){
+		
+		ImagePanel background = new ImagePanel("background 2.jpg");
+		background.setLayout(new BorderLayout());
+		pane.setLayout(new BorderLayout()); 
+		pane.add(background);
+		
 		int gold = player.getCurrency(); //will be used to create JLabel to show gold
 		int level = GameLevel.getLevel();
 		HP MonsterHp = monsterHp.getHP();
 		int CharacterHp = player.getHP();
 
 		JPanel TopButtons = new JPanel();
-		TopButtons.setLayout(new GridLayout(1,3,1,1));
+		TopButtons.setLayout(new GridLayout(1,4,1,1));
 		
 		JButton fightQuit = new JButton("<html><font color=red size=4><b>Quit</b></html>");
 
@@ -265,7 +271,7 @@ public class Menu {
 		}
 		TimerTask task = new Helper();
 		timer.schedule(task,0, 1000);
-		pane.add(start);
+		//pane.add(start);
 		
 		JLabel goldAndLevel = new JLabel();
 		String gold1 = String.valueOf(gold);
@@ -292,16 +298,18 @@ public class Menu {
 		
 		
 		TopButtons.add(fightQuit);
+		TopButtons.add(start);
 		TopButtons.add(MonCharHp);
 		TopButtons.add(goldAndLevel);
 		
 		pane.add(TopButtons, BorderLayout.PAGE_START);
 		
+		
 		deck.add(pane, "fight");
 		
 		//Creates layout of all buttons in fight menu
-		JPanel fightButtons = new JPanel();
-		fightButtons.setLayout(new GridLayout(1,3,1,1));
+		//JPanel fightButtons = new JPanel();
+		//fightButtons.setLayout(new GridLayout(1,3,1,1));
 		
 		//Quit Button, going back to start menu
 		fightQuit.addActionListener(new ActionListener(){
@@ -309,7 +317,7 @@ public class Menu {
 			public void actionPerformed (ActionEvent e) { //go back to start menu
 				  LAYOUT.show(deck, "start");
 				 }
-			});
+		});
 
 		
 		deck.add(pane, "fight");
