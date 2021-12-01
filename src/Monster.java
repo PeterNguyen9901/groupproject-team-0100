@@ -7,7 +7,7 @@ public class Monster {
 		MonType = monType;
 		health = new HP();
 		health.setHp(50);
-		Attack = 5;
+		Attack = level * 5 / 2;
 		reward = level * 30;
 	}
 	public HP getHP() {

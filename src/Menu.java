@@ -204,39 +204,81 @@ public class Menu {
 
 		// JPanel that will hold all of the buy weapons buttons 
 		JPanel buyButtons = new JPanel();
-		buyButtons.setLayout(new GridLayout(1,3,1,1));
+		buyButtons.setLayout(new GridLayout(1,5,1,1));
 	
 		// buy button for axe
 		ImageIcon axe = new ImageIcon("wip_axe.jpg");
 		JButton axeButton = new JButton(axe);
 		buyButtons.add(axeButton); // add axeButton to buyButtons panel 
-				
+		axeButton.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed (ActionEvent e) { //go back to start menu
+				  player.manipWeaponList(weaponType.AXE);
+				  System.out.println(player.getWeaponList().get(weaponType.AXE).getLevel());			}
+		});
 		// buy button for bow
 		ImageIcon bow = new ImageIcon("wip_bow.jpg");
 		JButton bowButton = new JButton(bow);
 		buyButtons.add(bowButton); // add bowButton to buyButtons panel
-
+		
+		bowButton.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed (ActionEvent e) { //go back to start menu
+				  player.manipWeaponList(weaponType.BOW);
+				  System.out.println(player.getWeaponList().get(weaponType.BOW).getLevel());			}
+		});
+		
 		// buy button for dagger
 		ImageIcon dagger = new ImageIcon("wip_dagger.jpg");
 		JButton daggerButton = new JButton(dagger);
 		buyButtons.add(daggerButton); // add daggerButton to buyButtons panel		
+		
+		daggerButton.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed (ActionEvent e) { //go back to start menu
+				  player.manipWeaponList(weaponType.DAGGER);
+				  System.out.println(player.getWeaponList().get(weaponType.DAGGER).getLevel());			}
+		});
 		
 		// buy button for spear 
 		ImageIcon spear = new ImageIcon("wip_spear.jpg");
 		JButton spearButton = new JButton(spear);
 		buyButtons.add(spearButton);	// add spearButton to buyButtons panel
 		
+		spearButton.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed (ActionEvent e) { //go back to start menu
+				  player.manipWeaponList(weaponType.SPEAR);
+				  System.out.println(player.getWeaponList().get(weaponType.SPEAR).getLevel());			}
+		});
+		
 		// buy button for sword
 		ImageIcon sword = new ImageIcon("wip_sword.jpg");
 		JButton swordButton = new JButton(sword);
 		buyButtons.add(swordButton); 	// add swordButton to buyButtons panel
 		
+		swordButton.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed (ActionEvent e) { //go back to start menu
+				  player.manipWeaponList(weaponType.SWORD);
+				  System.out.println(player.getWeaponList().get(weaponType.SWORD).getLevel());
+			}
+		});
+		
 		// adds buyButtons to end of pane 
 		pane.add(buyButtons, BorderLayout.PAGE_START); 
 		pane.add(BottomButtons, BorderLayout.PAGE_END);
 		//buy button for health
-		JButton healthButton = new JButton("Upgrade");
+		JButton healthButton = new JButton("Upgrade Health");
 		pane.add(healthButton);
+		//button that increases player health by 20 each time
+		healthButton.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed (ActionEvent e) { //go back to start menu
+				  player.setHP(player.getHP() + 20);
+				  System.out.println(player.getHP());
+			}
+		});
 		
 		deck.add(pane,"shop");
 	}

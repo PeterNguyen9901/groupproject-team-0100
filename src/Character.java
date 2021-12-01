@@ -30,6 +30,10 @@ public class Character {
 	}
 	public void setLevel(int x) {
 		currLevel.setLevel(x);
+		//updates all the monsters attack when character level changes
+		for(Monster i : monsterList.values()) {
+			i.setAtk(currLevel.getLevel() * 5 / 2);
+		}
 	}
 	public int getLevel() {
 		return currLevel.getLevel();
@@ -54,10 +58,11 @@ public class Character {
 	public HashMap<weaponType, weapons> getWeaponList() {
 		return weaponList;
 	}
+	public void manipWeaponList(weaponType temp) {
+		weaponList.get(temp).incrementLevel(1);
+	}
 	public HashMap<monsterType, Monster> getMonsterList() {
-		
 		return monsterList;
-		
 	}
 	public void setCurrency(int x) {
 		Currency.setGold(x);

@@ -60,7 +60,7 @@ public class weapons {
 	
 	public int incrementLevel(int n) {
 		
-		return n += level;
+		return level += n;
 		
 	}
 	
