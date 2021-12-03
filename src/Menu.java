@@ -22,7 +22,7 @@ public class Menu {
 	Level GameLevel = new Level();
 	HP playerHp = new HP();
 	Monster monsterHp = new Monster(null, 0);
-	
+	Damage playerDamage = new Damage(); //
 	
 	public Menu() {
 		deck.setLayout(LAYOUT);
@@ -429,7 +429,9 @@ public class Menu {
 		// damage label 
 		JLabel damage = new JLabel();
 		String damageStr = "<html><font size=8>Damage:</html>";
-		damage.setText(damageStr);
+		int numDamage = playerDamage.gettotalDamage(); // get players damage 
+		String currDamage = String.valueOf(numDamage);  //
+		damage.setText(damageStr + currDamage); // add the damage to label 
 		damage.setBorder(blackLine);
 		labels.add(damage); 
 		 
@@ -437,7 +439,9 @@ public class Menu {
 		// kills label 
 		JLabel kills = new JLabel();
 		String killStr = "<html><font size=8>Kills:</font></html>";
-		kills.setText(killStr);
+		int numKills = player.getmonsterKilled(); // get number of monsters killed
+		String currKills = String.valueOf(numKills); // 
+		kills.setText(killStr + currKills); // add number of monsters killed to label 
 		kills.setBorder(blackLine);
 		labels.add(kills);
 		
@@ -451,7 +455,11 @@ public class Menu {
 		// level label 
 		JLabel level = new JLabel();
 		String levelStr = "<html><font size=8>Level:";
-		level.setText(levelStr);
+		//Level newLevel = new Level(); //
+		int levelX = GameLevel.getLevel(); //
+		String currentLevel = String.valueOf(levelX); //
+		String LevelText = levelStr + currentLevel; // displays current level
+		level.setText(LevelText); // 
 		level.setBorder(blackLine);
 		labels.add(level); 
 		
