@@ -122,6 +122,8 @@ public class Menu {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				LAYOUT.show(deck, "fight");
+				HP t = new HP();
+				t.start_t();
 			}
 		});
 		//action listener for stats button
@@ -378,6 +380,8 @@ public class Menu {
 			@Override
 			public void actionPerformed (ActionEvent e) { //go back to start menu
 				  LAYOUT.show(deck, "start");
+				  HP t = new HP();
+				  t.end_t();
 				 }
 		});
 

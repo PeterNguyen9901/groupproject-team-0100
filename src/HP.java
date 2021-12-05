@@ -12,6 +12,7 @@ class HP {
             //...Perform a task...
 
             System.out.println("Reading SMTP Info.");
+            Health = Health -2;
             
         }
     };
