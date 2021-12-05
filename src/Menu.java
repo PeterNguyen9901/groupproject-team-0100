@@ -2,6 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 //import java.awt.event.*;
 import javax.swing.border.Border;
 import java.util.Timer;
@@ -214,7 +217,7 @@ public class Menu {
 			@Override
 			public void actionPerformed (ActionEvent e) { //go back to start menu
 				  player.manipWeaponList(weaponType.AXE);
-				  System.out.println(player.getWeaponList().get(weaponType.AXE).getLevel());			}
+				  System.out.println("axe lvl: " + player.getWeaponList().get(weaponType.AXE).getLevel());			}
 		});
 		// buy button for bow
 		ImageIcon bow = new ImageIcon("wip_bow.jpg");
@@ -225,7 +228,7 @@ public class Menu {
 			@Override
 			public void actionPerformed (ActionEvent e) { //go back to start menu
 				  player.manipWeaponList(weaponType.BOW);
-				  System.out.println(player.getWeaponList().get(weaponType.BOW).getLevel());			}
+				  System.out.println("bow lvl: " + player.getWeaponList().get(weaponType.BOW).getLevel());			}
 		});
 		
 		// buy button for dagger
@@ -237,7 +240,7 @@ public class Menu {
 			@Override
 			public void actionPerformed (ActionEvent e) { //go back to start menu
 				  player.manipWeaponList(weaponType.DAGGER);
-				  System.out.println(player.getWeaponList().get(weaponType.DAGGER).getLevel());			}
+				  System.out.println("dagger lvl: " + player.getWeaponList().get(weaponType.DAGGER).getLevel());			}
 		});
 		
 		// buy button for spear 
@@ -249,7 +252,7 @@ public class Menu {
 			@Override
 			public void actionPerformed (ActionEvent e) { //go back to start menu
 				  player.manipWeaponList(weaponType.SPEAR);
-				  System.out.println(player.getWeaponList().get(weaponType.SPEAR).getLevel());			}
+				  System.out.println("spear lvl: " + player.getWeaponList().get(weaponType.SPEAR).getLevel());			}
 		});
 		
 		// buy button for sword
@@ -261,7 +264,7 @@ public class Menu {
 			@Override
 			public void actionPerformed (ActionEvent e) { //go back to start menu
 				  player.manipWeaponList(weaponType.SWORD);
-				  System.out.println(player.getWeaponList().get(weaponType.SWORD).getLevel());
+				  System.out.println("sword lvl: " + player.getWeaponList().get(weaponType.SWORD).getLevel());
 			}
 		});
 		
@@ -277,6 +280,7 @@ public class Menu {
 			public void actionPerformed (ActionEvent e) { //go back to start menu
 				  player.setHP(player.getHP() + 20);
 				  System.out.println(player.getHP());
+				  
 			}
 		});
 		
@@ -285,8 +289,10 @@ public class Menu {
 	
 	
 	public void fight(Container pane){
+		JLabel MonCharHp = new JLabel();
+		MonCharHp.setBorder(blackLine);
+		ImagePanel background = new ImagePanel("background 2.jpg", player, monsterHp, MonCharHp);
 		
-		ImagePanel background = new ImagePanel("background 2.jpg");
 		background.setLayout(new BorderLayout());
 		pane.setLayout(new BorderLayout()); 
 
@@ -338,15 +344,15 @@ public class Menu {
 		goldAndLevel.setText(FullText);
 		goldAndLevel.setBorder(blackLine);
 		
-		JLabel MonCharHp = new JLabel();
-		String mHp = String.valueOf(MonsterHp);
+		
+		String mHp = String.valueOf(MonsterHp.getHp());
 		String cHp = String.valueOf(CharacterHp);
 		
 		String mHpStr = "<html>Monster Health: ";
 		String cHpStr = "<br/>Character Health: ";
 		String text = mHpStr + mHp + cHpStr + cHp;
 		MonCharHp.setText(text);
-		MonCharHp.setBorder(blackLine);
+		
 		
 		
 	
