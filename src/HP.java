@@ -7,17 +7,6 @@ class HP {
 	
 	private int Health;
 	private int characterDeath;
-	ActionListener taskPerformer = new ActionListener() {
-        public void actionPerformed(ActionEvent evt) {
-            //...Perform a task...
-
-        	Health = Health -2;
-            System.out.println("Reading SMTP Info.");
-            System.out.println(Health);
-            
-        }
-    };
-    private Timer timer = new Timer(5000 ,taskPerformer);
 	
 	public HP() {//constructor
 		Health = 20;
@@ -49,15 +38,5 @@ class HP {
 		}
 		return dmg;
 	}
-	
-	public void start_t() {
-		
-        timer.restart();
-        
-	}
-	
-	
-	public void end_t() {
-		timer.stop();
-	}
+
 }
