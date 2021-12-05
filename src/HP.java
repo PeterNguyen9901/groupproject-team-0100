@@ -1,7 +1,21 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.Timer;
 
 class HP {
+	
 	private int Health;
 	private int characterDeath;
+	ActionListener taskPerformer = new ActionListener() {
+        public void actionPerformed(ActionEvent evt) {
+            //...Perform a task...
+
+            System.out.println("Reading SMTP Info.");
+            
+        }
+    };
+    Timer timer = new Timer(5000 ,taskPerformer);
 	
 	public HP() {//constructor
 		Health = 20;
@@ -32,5 +46,17 @@ class HP {
 			//return to start of game
 		}
 		return dmg;
+	}
+	
+	public void start_t() {
+		timer.setRepeats(true);
+        timer.start();
+        
+	}
+	
+	
+	public void end_t() {
+		timer.restart();
+	
 	}
 }
