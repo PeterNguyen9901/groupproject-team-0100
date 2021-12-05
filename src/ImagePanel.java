@@ -26,7 +26,7 @@ class ImagePanel extends JPanel {
         	String mHpStr = "<html>Monster Health: ";
     		String cHpStr = "<br/>Character Health: ";
     		//String text = mHpStr + currentMonster.getHP().getHp() + cHpStr + player.getHP();
-    		String text = mHpStr + currentMonster.getHP() + cHpStr + player.getHP(); // 
+    		String text = mHpStr + currentMonster.getHP() + cHpStr + player.getHP(); //
     		statusLabel.setText(text);
     		//MonCharHp.setBorder(blackLine);
             System.out.println("clicked");

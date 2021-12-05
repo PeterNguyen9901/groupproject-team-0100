@@ -305,7 +305,7 @@ public class Menu {
 		int gold = player.getCurrency(); //will be used to create JLabel to show gold
 		int level = GameLevel.getLevel();
 		//HP MonsterHp = monsterHp.getHP();
-		int MonsterHp = monsterHp.getHP(); // 
+		int MonsterHp = monsterHp.getHP();// 
 		int CharacterHp = player.getHP();
 
 		JPanel TopButtons = new JPanel();
@@ -350,7 +350,7 @@ public class Menu {
 		
 		
 		//String mHp = String.valueOf(MonsterHp.getHp());
-		String mHp = String.valueOf(MonsterHp); // 
+		String mHp = String.valueOf(MonsterHp); //
 		String cHp = String.valueOf(CharacterHp);
 		
 		String mHpStr = "<html>Monster Health: ";

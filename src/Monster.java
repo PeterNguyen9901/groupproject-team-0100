@@ -13,9 +13,11 @@ public class Monster {
 	/*public HP getHP() {
 		return health;
 	}*/
+	
 	public int getHP() { 
 		return health.getHp();
 	}
+	
 	public void setHP(int n) {
 		health.setHp(n);
 	}
