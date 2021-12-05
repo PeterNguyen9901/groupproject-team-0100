@@ -202,7 +202,7 @@ public class Menu {
 		
 		goldLabel.setText(FullText); 
 		goldLabel.setBorder(goldAndLevel);
-		pane.add(goldLabel);
+		pane.add(goldLabel, BorderLayout.PAGE_START);
 		 
 
 		// JPanel that will hold all of the buy weapons buttons 
@@ -210,7 +210,7 @@ public class Menu {
 		buyButtons.setLayout(new GridLayout(1,5,1,1));
 	
 		// buy button for axe
-		ImageIcon axe = new ImageIcon("wip_axe.jpg");
+		ImageIcon axe = new ImageIcon("w_axe.png");
 		JButton axeButton = new JButton(axe);
 		buyButtons.add(axeButton); // add axeButton to buyButtons panel 
 		axeButton.addActionListener(new ActionListener(){
@@ -220,7 +220,7 @@ public class Menu {
 				  System.out.println("axe lvl: " + player.getWeaponList().get(weaponType.AXE).getLevel());			}
 		});
 		// buy button for bow
-		ImageIcon bow = new ImageIcon("wip_bow.jpg");
+		ImageIcon bow = new ImageIcon("w_bow.png");
 		JButton bowButton = new JButton(bow);
 		buyButtons.add(bowButton); // add bowButton to buyButtons panel
 		
@@ -232,7 +232,7 @@ public class Menu {
 		});
 		
 		// buy button for dagger
-		ImageIcon dagger = new ImageIcon("wip_dagger.jpg");
+		ImageIcon dagger = new ImageIcon("w_dagger.png");
 		JButton daggerButton = new JButton(dagger);
 		buyButtons.add(daggerButton); // add daggerButton to buyButtons panel		
 		
@@ -244,7 +244,7 @@ public class Menu {
 		});
 		
 		// buy button for spear 
-		ImageIcon spear = new ImageIcon("wip_spear.jpg");
+		ImageIcon spear = new ImageIcon("w_spear.png");
 		JButton spearButton = new JButton(spear);
 		buyButtons.add(spearButton);	// add spearButton to buyButtons panel
 		
@@ -256,7 +256,7 @@ public class Menu {
 		});
 		
 		// buy button for sword
-		ImageIcon sword = new ImageIcon("wip_sword.jpg");
+		ImageIcon sword = new ImageIcon("w_sword.png");
 		JButton swordButton = new JButton(sword);
 		buyButtons.add(swordButton); 	// add swordButton to buyButtons panel
 		
@@ -269,11 +269,12 @@ public class Menu {
 		});
 		
 		// adds buyButtons to end of pane 
-		pane.add(buyButtons, BorderLayout.PAGE_START); 
+		pane.add(buyButtons); 
 		pane.add(BottomButtons, BorderLayout.PAGE_END);
 		//buy button for health
 		JButton healthButton = new JButton("Upgrade Health");
-		pane.add(healthButton);
+		//pane.add(healthButton);
+		buyButtons.add(healthButton);
 		//button that increases player health by 20 each time
 		healthButton.addActionListener(new ActionListener(){
 			@Override
