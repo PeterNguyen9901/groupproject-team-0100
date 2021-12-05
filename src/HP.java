@@ -11,12 +11,13 @@ class HP {
         public void actionPerformed(ActionEvent evt) {
             //...Perform a task...
 
+        	Health = Health -2;
             System.out.println("Reading SMTP Info.");
-            Health = Health -2;
+            System.out.println(Health);
             
         }
     };
-    Timer timer = new Timer(5000 ,taskPerformer);
+    private Timer timer = new Timer(5000 ,taskPerformer);
 	
 	public HP() {//constructor
 		Health = 20;
@@ -50,14 +51,13 @@ class HP {
 	}
 	
 	public void start_t() {
-		timer.setRepeats(true);
-        timer.start();
+		
+        timer.restart();
         
 	}
 	
 	
 	public void end_t() {
-		timer.restart();
-	
+		timer.stop();
 	}
 }

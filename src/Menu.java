@@ -5,11 +5,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+
+import javax.swing.Timer;
+
 //import java.awt.event.*;
 import javax.swing.border.Border;
-import java.util.Timer;
-import java.util.TimerTask;
+
 public class Menu {
+	
 	JFrame frame = new JFrame("Click Click Go");
 	private JPanel deck = new JPanel();
 	private JPanel mainPanel = new JPanel();
@@ -24,9 +27,23 @@ public class Menu {
 	Character player = new Character();
 	Level GameLevel = new Level();
 	HP playerHp = new HP();
+	
 	Monster monsterHp = new Monster(null, 0);
 	Damage playerDamage = new Damage(); //
 	
+	//Timer code for monster damage every five seconds
+	ActionListener taskPerformer = new ActionListener() {
+        public void actionPerformed(ActionEvent evt) {
+            //...Perform a task...
+
+            System.out.println("Gah! HIT!.");
+            player.loseHP(1+(player.getLevel()*2));
+            System.out.println("HP: " + player.getHP());
+            
+        }
+    };
+    private Timer timer = new Timer(5000 ,taskPerformer);
+    int tmp_HP;
 	
 	public Menu() {
 		deck.setLayout(LAYOUT);
@@ -123,8 +140,8 @@ public class Menu {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				LAYOUT.show(deck, "fight");
-				HP t = new HP();
-				t.start_t();
+				timer.restart();
+				tmp_HP = player.getHP();
 			}
 		});
 		//action listener for stats button
@@ -327,16 +344,8 @@ public class Menu {
 		background.add(slime);
 		pane.add(background);
 		
-		Timer timer = new Timer(); // Base Timer code for now  
 		JLabel start = new JLabel();
-		class Helper extends TimerTask{
-		    public static int i = 3;
-		    public void run() {
-		    	start.setText(String.valueOf(+ i++));
-		    }
-		}
-		TimerTask task = new Helper();
-		timer.schedule(task,0, 1000);
+
 		//pane.add(start);
 		
 		JLabel goldAndLevel = new JLabel();
@@ -386,8 +395,8 @@ public class Menu {
 			@Override
 			public void actionPerformed (ActionEvent e) { //go back to start menu
 				  LAYOUT.show(deck, "start");
-				  HP t = new HP();
-				  t.end_t();
+				  timer.stop();
+				  player.setHP(tmp_HP);
 				 }
 		});
 
