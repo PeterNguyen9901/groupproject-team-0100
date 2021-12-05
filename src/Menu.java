@@ -27,6 +27,7 @@ public class Menu {
 	Monster monsterHp = new Monster(null, 0);
 	Damage playerDamage = new Damage(); //
 	
+	
 	public Menu() {
 		deck.setLayout(LAYOUT);
 		
@@ -344,6 +345,9 @@ public class Menu {
 		
 		String goldStr = "<html>Gold: ";
 		String levelStr = "<br/>Level: ";
+		if(monsterHp.getHP() <= 0) {
+			gold++; // thought this would increase gold but i don't think so
+		} 
 		String FullText = goldStr + gold1 + levelStr + level1;
 		goldAndLevel.setText(FullText);
 		goldAndLevel.setBorder(blackLine);
@@ -460,15 +464,16 @@ public class Menu {
 		int numKills = player.getmonsterKilled(); // get number of monsters killed
 		String currKills = String.valueOf(numKills); // 
 		String killText = killStr + currKills;
-		kills.setText(killText); // add number of monsters killed to label 
+		kills.setText(killText); // add number of monsters killed to label
 		kills.setBorder(blackLine);
 		labels.add(kills);
+		
 		
 		// deaths label 
 		JLabel deaths = new JLabel();
 		String deathStr = "<html><font size=8>Deaths:";
 		int playerDeath = 0;
-		if(player.getHP() <=0) {
+		if(player.getHP() <= 0) {
 			playerDeath++; 
 		}
 		playerHp.setCharacterDeath(playerDeath);
@@ -478,6 +483,7 @@ public class Menu {
 		deaths.setText(deathText);
 		deaths.setBorder(blackLine);
 		labels.add(deaths);
+		
 		
 		// level label 
 		JLabel level = new JLabel();
