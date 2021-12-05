@@ -302,7 +302,8 @@ public class Menu {
 		
 		int gold = player.getCurrency(); //will be used to create JLabel to show gold
 		int level = GameLevel.getLevel();
-		HP MonsterHp = monsterHp.getHP();
+		//HP MonsterHp = monsterHp.getHP();
+		int MonsterHp = monsterHp.getHP(); // 
 		int CharacterHp = player.getHP();
 
 		JPanel TopButtons = new JPanel();
@@ -346,7 +347,8 @@ public class Menu {
 		goldAndLevel.setBorder(blackLine);
 		
 		
-		String mHp = String.valueOf(MonsterHp.getHp());
+		//String mHp = String.valueOf(MonsterHp.getHp());
+		String mHp = String.valueOf(MonsterHp); // 
 		String cHp = String.valueOf(CharacterHp);
 		
 		String mHpStr = "<html>Monster Health: ";
@@ -446,16 +448,30 @@ public class Menu {
 		// kills label 
 		JLabel kills = new JLabel();
 		String killStr = "<html><font size=8>Kills:</font></html>";
+		int monsterKilled = 0; //
+		if(monsterHp.getHP() <= 0) {
+			monsterKilled++;  //
+		} 
+		player.setMonsterKilled(monsterKilled); //
 		int numKills = player.getmonsterKilled(); // get number of monsters killed
 		String currKills = String.valueOf(numKills); // 
-		kills.setText(killStr + currKills); // add number of monsters killed to label 
+		String killText = killStr + currKills;
+		kills.setText(killText); // add number of monsters killed to label 
 		kills.setBorder(blackLine);
 		labels.add(kills);
 		
 		// deaths label 
 		JLabel deaths = new JLabel();
 		String deathStr = "<html><font size=8>Deaths:";
-		deaths.setText(deathStr);
+		int playerDeath = 0;
+		if(player.getHP() <=0) {
+			playerDeath++; 
+		}
+		playerHp.setCharacterDeath(playerDeath);
+		int numDeaths = playerHp.getCharacterDeath();
+		String currDeaths = String.valueOf(numDeaths);
+		String deathText = deathStr + currDeaths;
+		deaths.setText(deathText);
 		deaths.setBorder(blackLine);
 		labels.add(deaths);
 		

@@ -10,8 +10,11 @@ public class Monster {
 		Attack = level * 5 / 2;
 		reward = level * 30;
 	}
-	public HP getHP() {
+	/*public HP getHP() {
 		return health;
+	}*/
+	public int getHP() { 
+		return health.getHp();
 	}
 	public void setHP(int n) {
 		health.setHp(n);
