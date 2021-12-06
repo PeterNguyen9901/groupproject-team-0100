@@ -1,3 +1,4 @@
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -6,6 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.Timer;
 
 class ImagePanel extends JPanel {
 
@@ -33,6 +35,9 @@ class ImagePanel extends JPanel {
             if(currentMonster.getHP()<=0) {
             	text = mHpStr + 0 + cHpStr + player.getHP(); 
         		statusLabel.setText(text);
+        		Menu menu = new Menu();
+				menu.resettimer();
+        	
             }
         }
     });

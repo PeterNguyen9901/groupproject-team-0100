@@ -49,8 +49,10 @@ public class Menu {
             
         }
     };
-    private Timer timer = new Timer(5000 ,taskPerformer);
+    Timer timer = new Timer(5000 ,taskPerformer);
     int tmp_HP;
+    int perm_HP = 20;
+   
 	
 	public Menu() {
 		deck.setLayout(LAYOUT);
@@ -61,12 +63,16 @@ public class Menu {
 		fight(fightPanel);
 		stats(statsPanel);
 		
+		
 		LAYOUT.show(deck, "start");
 		frame.add(deck);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setSize(800,800);
         frame.setVisible(true);
+	}
+	public void resettimer() {
+		timer.stop();
 	}
 	public void MainMenu(Container pane) {
 		ImagePanel background = new ImagePanel("background1.jpg");
@@ -308,6 +314,7 @@ public class Menu {
 			public void actionPerformed (ActionEvent e) { //go back to start menu
 				  player.setHP(player.getHP() + 20);
 				  System.out.println(player.getHP());
+				  perm_HP = perm_HP + 20;
 				  
 			}
 		});
