@@ -30,6 +30,10 @@ class ImagePanel extends JPanel {
     		statusLabel.setText(text);
     		//MonCharHp.setBorder(blackLine);
             System.out.println("clicked");
+            if(currentMonster.getHP()<=0) {
+            	text = mHpStr + 0 + cHpStr + player.getHP(); 
+        		statusLabel.setText(text);
+            }
         }
     });
     

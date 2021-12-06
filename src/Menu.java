@@ -34,11 +34,18 @@ public class Menu {
 	//Timer code for monster damage every five seconds
 	ActionListener taskPerformer = new ActionListener() {
         public void actionPerformed(ActionEvent evt) {
-            //...Perform a task...
-
-            System.out.println("Gah! HIT!.");
-            player.loseHP(1+(player.getLevel()*2));
-            System.out.println("HP: " + player.getHP());
+            //simulation of monster dealing damage over time
+        	if(player.getHP()>0) {
+        		System.out.println("Gah! HIT!.");
+        		player.loseHP(1+(player.getLevel()*2));
+        		if(player.getHP() < 0) {
+        			player.setHP(0);
+        		}
+        		System.out.println("HP: " + player.getHP());
+        	}
+        		else {
+        			System.out.println("HP: DEAD!");
+        		}
             
         }
     };
