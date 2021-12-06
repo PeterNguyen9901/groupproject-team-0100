@@ -37,6 +37,8 @@ class ImagePanel extends JPanel {
         		statusLabel.setText(text);
         		Menu menu = new Menu();
 				menu.resettimer();
+				Level l = new Level();
+				l.addLevel();
         	
             }
         }

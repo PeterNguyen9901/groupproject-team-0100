@@ -4,9 +4,11 @@ public class Monster {
 	private monsterType MonType;
 	private int reward;//variable to hold how much gold the player would get
 	public Monster(monsterType monType, int level) {
+		Level l = new Level();
+		level = l.getLevel();
 		MonType = monType;
 		health = new HP();
-		health.setHp(50);
+		health.setHp(level * 2 + (20 * (level*10/5)) );
 		Attack = level * 5 / 2;
 		reward = level * 30;
 	}

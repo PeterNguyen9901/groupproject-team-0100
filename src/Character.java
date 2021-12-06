@@ -29,7 +29,7 @@ public class Character {
 		this.monsterKilled = monsterKilled;
 	}
 	public void setLevel(int x) {
-		currLevel.setLevel(x);
+		//currLevel.setLevel(x);
 		//updates all the monsters attack when character level changes
 		for(Monster i : monsterList.values()) {
 			i.setAtk(currLevel.getLevel() * 5 / 2);
