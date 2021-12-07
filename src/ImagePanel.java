@@ -17,7 +17,7 @@ class ImagePanel extends JPanel {
 	    this(new ImageIcon(img).getImage());
 	    }
 
-  public ImagePanel(String img, Character player, Monster currentMonster, JLabel statusLabel) {
+  public ImagePanel(String img, Character player, Monster currentMonster, JLabel statusLabel, JLabel levelsGold) {
     this(new ImageIcon(img).getImage());
     
     addMouseListener(new MouseAdapter() { //listener for when user clicks onto the background so we can use that to deal damage to monster
@@ -27,18 +27,20 @@ class ImagePanel extends JPanel {
         	currentMonster.loseHP(player.getLevel());
         	String mHpStr = "<html>Monster Health: ";
     		String cHpStr = "<br/>Character Health: ";
-    		//String text = mHpStr + currentMonster.getHP().getHp() + cHpStr + player.getHP();
     		String text = mHpStr + currentMonster.getHP() + cHpStr + player.getHP(); //
     		statusLabel.setText(text);
-    		//MonCharHp.setBorder(blackLine);
             System.out.println("clicked");
             if(currentMonster.getHP()<=0) {
             	text = mHpStr + 0 + cHpStr + player.getHP(); 
         		statusLabel.setText(text);
-        		Menu menu = new Menu();
-				menu.resettimer();
-				Level l = new Level();
-				l.addLevel();
+        		player.addLevel(1);
+        		currentMonster.addLevel(1);
+        		player.setCurrency(player.getCurrency()+currentMonster.getReward());
+        		String goldStr = "<html>Gold: ";
+        		String levelStr = "<br/>Level: ";
+        		String FullText = goldStr + player.getCurrency() + levelStr + player.getLevel();
+        		levelsGold.setText(FullText);
+        		text = mHpStr + currentMonster.getHP() + cHpStr + player.getHP(); 
         	
             }
         }

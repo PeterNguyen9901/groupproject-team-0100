@@ -2,20 +2,27 @@ public class Monster {
 	private HP health;
 	private int Attack;
 	private monsterType MonType;
+	private Level monsterLevel;
 	private int reward;//variable to hold how much gold the player would get
-	public Monster(monsterType monType, int level) {
-		Level l = new Level();
-		level = l.getLevel();
+	public Monster(monsterType monType) {
+		monsterLevel = new Level();
 		MonType = monType;
 		health = new HP();
+		int level = monsterLevel.getLevel();
 		health.setHp(level * 2 + (20 * (level*10/5)) );
-		Attack = level * 5 / 2;
+		Attack = level * 3 / 2;
 		reward = level * 30;
 	}
-	/*public HP getHP() {
-		return health;
-	}*/
-	
+	public int getLevel() {
+		return monsterLevel.getLevel();
+	}
+	public void addLevel(int x) {
+		monsterLevel.addLevel(x);
+		int level = monsterLevel.getLevel();
+		health.setHp(level * 2 + (20 * (level*10/5)) );
+		Attack = level * 3 / 2;
+		reward = level * 30;
+	}
 	public int getHP() { 
 		return health.getHp();
 	}

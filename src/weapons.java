@@ -10,11 +10,6 @@ public class weapons {
 		level = 0;
 		weaponType = type;
 	}
-	/*
-	public enum weaponType {
-		Sword, Axe, Bow, Spear, Dagger
-	}
-	*/
 	
 	public double getDamage(monsterType type) { // Built constructor for weapons damage
 		if (weaponType ==  weaponType.DAGGER) {
@@ -65,24 +60,6 @@ public class weapons {
 	}
 	
 	public weaponType getType() {
-		/*
-		switch(weapon) {
-		case Sword:
-			return weaponType.Sword; 
-			
-		case Axe:
-			return weaponType.Axe;
-			
-		case Bow:
-			return weaponType.Bow;
-			
-		case Spear:
-			return weaponType.Spear;
-			
-		case Dagger:
-			return weaponType.Dagger;
-		}
-		*/
 		return weaponType; 
 	}
 	

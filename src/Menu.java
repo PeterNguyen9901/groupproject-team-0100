@@ -28,7 +28,7 @@ public class Menu {
 	Level GameLevel = new Level();
 	HP playerHp = new HP();
 	
-	Monster monsterHp = new Monster(null, 0);
+	Monster currentMonster = new Monster(monsterType.SLIME);
 	Damage playerDamage = new Damage(); //
 	
 	//Timer code for monster damage every five seconds
@@ -325,8 +325,9 @@ public class Menu {
 	
 	public void fight(Container pane){
 		JLabel MonCharHp = new JLabel();
+		JLabel goldAndLevel = new JLabel();
 		MonCharHp.setBorder(blackLine);
-		ImagePanel background = new ImagePanel("background 2.jpg", player, monsterHp, MonCharHp);
+		ImagePanel background = new ImagePanel("background 2.jpg", player, currentMonster, MonCharHp, goldAndLevel);
 		
 		background.setLayout(new BorderLayout());
 		pane.setLayout(new BorderLayout()); 
@@ -336,8 +337,7 @@ public class Menu {
 		
 		int gold = player.getCurrency(); //will be used to create JLabel to show gold
 		int level = GameLevel.getLevel();
-		//HP MonsterHp = monsterHp.getHP();
-		int MonsterHp = monsterHp.getHP();// 
+		int MonsterHp = currentMonster.getHP();// 
 		int CharacterHp = player.getHP();
 
 		JPanel TopButtons = new JPanel();
@@ -362,27 +362,22 @@ public class Menu {
 
 		//pane.add(start);
 		
-		JLabel goldAndLevel = new JLabel();
 		String gold1 = String.valueOf(gold);
 		String level1 = String.valueOf(level);
 		
 		String goldStr = "<html>Gold: ";
 		String levelStr = "<br/>Level: ";
-		if(monsterHp.getHP() <= 0) {
-			gold++; // thought this would increase gold but i don't think so
-		} 
 		String FullText = goldStr + gold1 + levelStr + level1;
 		goldAndLevel.setText(FullText);
 		goldAndLevel.setBorder(blackLine);
 		
 		
-		//String mHp = String.valueOf(MonsterHp.getHp());
-		String mHp = String.valueOf(MonsterHp); //
-		String cHp = String.valueOf(CharacterHp);
+		String monsterHp = String.valueOf(MonsterHp); //
+		String playerHp = String.valueOf(CharacterHp);
 		
 		String mHpStr = "<html>Monster Health: ";
 		String cHpStr = "<br/>Character Health: ";
-		String text = mHpStr + mHp + cHpStr + cHp;
+		String text = mHpStr + monsterHp + cHpStr + playerHp;
 		MonCharHp.setText(text);
 		
 		
@@ -480,7 +475,7 @@ public class Menu {
 		JLabel kills = new JLabel();
 		String killStr = "<html><font size=8>Kills:</font></html>";
 		int monsterKilled = 0; //
-		if(monsterHp.getHP() <= 0) {
+		if(currentMonster.getHP() <= 0) {
 			monsterKilled++;  //
 		} 
 		player.setMonsterKilled(monsterKilled); //

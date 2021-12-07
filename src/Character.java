@@ -15,6 +15,8 @@ public class Character {
 		Currency = new Gold();
 		health = new HP();
 		currLevel = new Level();
+		int level = currLevel.getLevel();
+		health.setHp(level * 2 + (20 * (level)));
 		weaponList = new HashMap<weaponType, weapons>();
 		monsterList = new HashMap<monsterType, Monster>();
 		initWeaponsList();
@@ -28,11 +30,13 @@ public class Character {
 	public void setMonsterKilled(int monsterKilled) {
 		this.monsterKilled = monsterKilled;
 	}
-	public void setLevel(int x) {
-		//currLevel.setLevel(x);
+	public void addLevel(int x) {
+		currLevel.addLevel(x);
+		int level = currLevel.getLevel();
+		health.setHp(level * 2 + (20 * (level)));
 		//updates all the monsters attack when character level changes
 		for(Monster i : monsterList.values()) {
-			i.setAtk(currLevel.getLevel() * 5 / 2);
+			i.addLevel(x);
 		}
 	}
 	public int getLevel() {
@@ -48,12 +52,12 @@ public class Character {
 		weaponList.put(weaponType.DAGGER, new weapons(weaponType.DAGGER));
 	}
 	public void initMonsterList() {
-		monsterList.put(monsterType.SLIME,new Monster(monsterType.SLIME, getLevel()));
-		monsterList.put(monsterType.GOBLIN,new Monster(monsterType.GOBLIN, getLevel()));
-		monsterList.put(monsterType.WEREWOLF,new Monster(monsterType.WEREWOLF, getLevel()));
-		monsterList.put(monsterType.BANDIT,new Monster(monsterType.BANDIT, getLevel()));
-		monsterList.put(monsterType.KNIGHT,new Monster(monsterType.KNIGHT, getLevel()));
-		monsterList.put(monsterType.DEMON,new Monster(monsterType.DEMON, getLevel() + 10));
+		monsterList.put(monsterType.SLIME,new Monster(monsterType.SLIME));
+		monsterList.put(monsterType.GOBLIN,new Monster(monsterType.GOBLIN));
+		monsterList.put(monsterType.WEREWOLF,new Monster(monsterType.WEREWOLF));
+		monsterList.put(monsterType.BANDIT,new Monster(monsterType.BANDIT));
+		monsterList.put(monsterType.KNIGHT,new Monster(monsterType.KNIGHT));
+		monsterList.put(monsterType.DEMON,new Monster(monsterType.DEMON));
 	}
 	public HashMap<weaponType, weapons> getWeaponList() {
 		return weaponList;

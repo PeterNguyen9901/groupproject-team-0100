@@ -9,7 +9,7 @@ class Level {
 		return level;
 	}
 
-	public void addLevel() {
-		level++;
+	public void addLevel(int x) {
+		level+=x;
 	}
 }
