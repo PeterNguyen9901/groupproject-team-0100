@@ -56,6 +56,9 @@ public class Menu {
 	
 	public Menu() {
 		deck.setLayout(LAYOUT);
+		String filepath = "backgroundmusic.wav";
+        Music musicObject = new Music();
+        musicObject.playMusic(filepath);
 		
 		start(startPanel);
 		MainMenu(mainPanel);
