@@ -329,6 +329,9 @@ public class Menu {
 	public void fight(Container pane){
 		JLabel MonCharHp = new JLabel();
 		JLabel goldAndLevel = new JLabel();
+		JLabel MonsterTalk = new JLabel(); 
+		String MonsterMessage = "Gah! HIT!"; 
+		
 		MonCharHp.setBorder(blackLine);
 		ImagePanel background = new ImagePanel("background 2.jpg", player, currentMonster, MonCharHp, goldAndLevel);
 		
@@ -361,6 +364,9 @@ public class Menu {
 		background.add(slime);
 		pane.add(background);
 		
+		MonsterTalk.setText(MonsterMessage);
+		MonsterTalk.setBorder(blackLine);
+		
 		JLabel start = new JLabel();
 
 		//pane.add(start);
@@ -390,6 +396,7 @@ public class Menu {
 		
 		TopButtons.add(fightQuit);
 		TopButtons.add(start);
+		TopButtons.add(MonsterTalk);
 		TopButtons.add(MonCharHp);
 		TopButtons.add(goldAndLevel);
 		
