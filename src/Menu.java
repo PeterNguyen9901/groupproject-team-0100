@@ -331,6 +331,7 @@ public class Menu {
 		JLabel goldAndLevel = new JLabel();
 		JLabel MonsterTalk = new JLabel(); 
 		String MonsterMessage = "Gah! HIT!"; 
+		String Blank = "";
 		
 		MonCharHp.setBorder(blackLine);
 		ImagePanel background = new ImagePanel("background 2.jpg", player, currentMonster, MonCharHp, goldAndLevel);
@@ -367,6 +368,7 @@ public class Menu {
 		MonsterTalk.setText(MonsterMessage);
 		MonsterTalk.setBorder(blackLine);
 		
+		//comment
 		JLabel start = new JLabel();
 
 		//pane.add(start);
