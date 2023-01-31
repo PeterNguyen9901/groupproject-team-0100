@@ -4,6 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Random;
+import java.util.ArrayList;
+import java.util.List;
 
 
 import javax.swing.Timer;
@@ -20,6 +23,8 @@ public class Menu {
 	private JPanel startPanel = new JPanel();
 	private JPanel fightPanel = new JPanel();
 	private JPanel statsPanel = new JPanel();
+	private static Random random = new Random();
+	
 	CardLayout LAYOUT = new CardLayout();
 	private Border blackLine = BorderFactory.createLineBorder(Color.black);
 	
@@ -176,6 +181,7 @@ public class Menu {
 		
 		deck.add(pane, "main");
 	}
+	
 	public void shop(Container pane) {
 		pane.setLayout(new BorderLayout());
 		JPanel BottomButtons = new JPanel(); //JPanel to hold buttons that will be on bottom of the screen
@@ -326,13 +332,26 @@ public class Menu {
 	}
 	
 	
+	public String GetCharacterDialogue() {
+		List<String> lines = new ArrayList<>();
+		lines.add("Ouch");
+		lines.add("I am Hit!");
+		lines.add("Bang!");
+		int index = random.nextInt(lines.size());
+		return lines.get(index);
+		
+		
+	}
 	public void fight(Container pane){
 		JLabel MonCharHp = new JLabel();
 		JLabel goldAndLevel = new JLabel();
 		JLabel MonsterTalk = new JLabel(); 
+		JLabel CharacterDialogue = new JLabel();
+		
 		String MonsterMessage = "Gah! HIT!"; 
 		String Blank = "";
 		
+		//comment
 		MonCharHp.setBorder(blackLine);
 		ImagePanel background = new ImagePanel("background 2.jpg", player, currentMonster, MonCharHp, goldAndLevel);
 		
@@ -391,6 +410,12 @@ public class Menu {
 		String text = mHpStr + monsterHp + cHpStr + playerHp;
 		MonCharHp.setText(text);
 		
+		//grab random character
+		String CharText = GetCharacterDialogue();
+		CharacterDialogue.setText(CharText);
+		CharacterDialogue.setBorder(blackLine);
+		
+		
 		
 		
 	
@@ -398,11 +423,14 @@ public class Menu {
 		
 		TopButtons.add(fightQuit);
 		TopButtons.add(start);
+		TopButtons.add(CharacterDialogue);
 		TopButtons.add(MonsterTalk);
 		TopButtons.add(MonCharHp);
 		TopButtons.add(goldAndLevel);
 		
 		pane.add(TopButtons, BorderLayout.PAGE_START);
+		
+
 		
 		
 		deck.add(pane, "fight");
@@ -410,6 +438,7 @@ public class Menu {
 		//Creates layout of all buttons in fight menu
 		//JPanel fightButtons = new JPanel();
 		//fightButtons.setLayout(new GridLayout(1,3,1,1));
+		
 		
 		//Quit Button, going back to start menu
 		fightQuit.addActionListener(new ActionListener(){
