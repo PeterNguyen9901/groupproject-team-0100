@@ -7,14 +7,22 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.Timer;
 
 class ImagePanel extends JPanel {
 
   private Image img;
+  private static Random random = new Random();
   
   public ImagePanel(String img) {
 	    this(new ImageIcon(img).getImage());
+	    
 	    }
 
   public ImagePanel(String img, Character player, Monster currentMonster, JLabel statusLabel, JLabel levelsGold) {
@@ -27,7 +35,10 @@ class ImagePanel extends JPanel {
         	currentMonster.loseHP(player.getLevel());
         	String mHpStr = "<html>Monster Health: ";
     		String cHpStr = "<br/>Character Health: ";
-    		String text = mHpStr + currentMonster.getHP() + cHpStr + player.getHP(); //
+    		String MonsterDialogue = "<br/>" ;
+    		String Message = GetCharacterDialogue();
+    		
+    		String text = mHpStr + currentMonster.getHP() + cHpStr + player.getHP() + MonsterDialogue + Message; //
     		statusLabel.setText(text);
             System.out.println("clicked");
             if(currentMonster.getHP()<=0) {
@@ -38,6 +49,7 @@ class ImagePanel extends JPanel {
         		player.setCurrency(player.getCurrency()+currentMonster.getReward());
         		String goldStr = "<html>Gold: ";
         		String levelStr = "<br/>Level: ";
+        		
         		String FullText = goldStr + player.getCurrency() + levelStr + player.getLevel();
         		levelsGold.setText(FullText);
         		text = mHpStr + currentMonster.getHP() + cHpStr + player.getHP(); 
@@ -52,6 +64,16 @@ class ImagePanel extends JPanel {
     this.img = img;
     setLayout(null);
   }
+  public String GetCharacterDialogue() {
+		List<String> lines = new ArrayList<>();
+		lines.add("Ouch");
+		lines.add("I am Hit!");
+		lines.add("Bang!");
+		int index = random.nextInt(lines.size());
+		return lines.get(index);
+		
+		
+	}
   
   //scales image to window size
   public void paintComponent(Graphics g) {

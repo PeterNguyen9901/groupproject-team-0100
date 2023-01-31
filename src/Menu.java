@@ -332,16 +332,7 @@ public class Menu {
 	}
 	
 	
-	public String GetCharacterDialogue() {
-		List<String> lines = new ArrayList<>();
-		lines.add("Ouch");
-		lines.add("I am Hit!");
-		lines.add("Bang!");
-		int index = random.nextInt(lines.size());
-		return lines.get(index);
-		
-		
-	}
+	
 	public void fight(Container pane){
 		JLabel MonCharHp = new JLabel();
 		JLabel goldAndLevel = new JLabel();
@@ -356,6 +347,7 @@ public class Menu {
 		ImagePanel background = new ImagePanel("background 2.jpg", player, currentMonster, MonCharHp, goldAndLevel);
 		
 		background.setLayout(new BorderLayout());
+		
 		pane.setLayout(new BorderLayout()); 
 
 		
@@ -407,13 +399,13 @@ public class Menu {
 		
 		String mHpStr = "<html>Monster Health: ";
 		String cHpStr = "<br/>Character Health: ";
-		String text = mHpStr + monsterHp + cHpStr + playerHp;
+		String text = mHpStr + currentMonster.getHP() + cHpStr + player.getHP();
 		MonCharHp.setText(text);
 		
 		//grab random character
-		String CharText = GetCharacterDialogue();
-		CharacterDialogue.setText(CharText);
-		CharacterDialogue.setBorder(blackLine);
+		
+		
+	
 		
 		
 		
@@ -423,7 +415,6 @@ public class Menu {
 		
 		TopButtons.add(fightQuit);
 		TopButtons.add(start);
-		TopButtons.add(CharacterDialogue);
 		TopButtons.add(MonsterTalk);
 		TopButtons.add(MonCharHp);
 		TopButtons.add(goldAndLevel);
@@ -438,7 +429,7 @@ public class Menu {
 		//Creates layout of all buttons in fight menu
 		//JPanel fightButtons = new JPanel();
 		//fightButtons.setLayout(new GridLayout(1,3,1,1));
-		
+	
 		
 		//Quit Button, going back to start menu
 		fightQuit.addActionListener(new ActionListener(){
@@ -454,6 +445,10 @@ public class Menu {
 		deck.add(pane, "fight");
 	}
 	
+	private void addMouseListener(MouseAdapter mouseAdapter) {
+		// TODO Auto-generated method stub
+		
+	}
 	public void stats(Container pane) {
 		pane.setLayout(new BorderLayout());
 		
